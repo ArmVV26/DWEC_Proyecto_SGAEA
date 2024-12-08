@@ -1,0 +1,192 @@
+┌───────────────────┐
+│ OPCIONES DEL MAIN │
+└───────────────────┘
+
+// Creacion de Direcciones
+const dir1 = new Direccion("Calle Una", 1, 0, 10000, "Granada", "Pulianas");
+const dir2 = new Direccion("Calle Dos", 2, 1, 20000, "Granada", "Pulianas");
+const dir3 = new Direccion("Calle Tres", 3, 2, 30000, "Granada", "Pulianas");
+const dir4 = new Direccion("Calle Cuatro", 4, 3, 40000, "Granada", "Pulianas");
+
+// Creacion de Asignaturas
+const DAWEB = new Asignatura("DAWEB");
+const DWESE = new Asignatura("DWESE");
+const DWECL = new Asignatura("DWECL");
+const DIWEB = new Asignatura("DIWEB");
+const IAB = new Asignatura("IAB");
+
+// Creacion de Estudiantes
+const armando = new Estudiante("Armando Vaquero",23,dir1);
+const antonio = new Estudiante("Antonio Fernandez",31,dir2);
+const marcos = new Estudiante("Marcos Pineda",22,dir3);
+const andrea = new Estudiante("Andrea Lopez",21,dir4);
+const claudia = new Estudiante("Claudia Perez",26,dir1);
+
+// Creacion de Listas
+const lista = new Lista();
+lista.agregarEstudiante(armando);
+lista.agregarEstudiante(antonio);
+lista.agregarEstudiante(marcos);
+lista.agregarEstudiante(andrea);
+lista.agregarEstudiante(claudia);
+
+lista.agregarAsignatura(DAWEB);
+lista.agregarAsignatura(DWESE);
+lista.agregarAsignatura(DWECL);
+lista.agregarAsignatura(DIWEB);
+lista.agregarAsignatura(IAB);
+
+// Mostrar Estudiante
+console.log(armando.id," - ",armando.mostrarPersona() ,"\n",
+            antonio.id," - ",antonio.mostrarPersona()
+);
+
+// Matricular y desmatricular Estudiante
+armando.matricular(DAWEB, DWESE, IAB);
+armando.desmatricular(DWESE);
+antonio.matricular(DAWEB, DWECL, IAB);
+antonio.desmatricular(DIWEB, DWECL);
+
+// Mostrar Historial Estudiante
+console.log(armando.mostrarHistorial(),
+            antonio.mostrarHistorial()
+);
+
+// Añadir Calificaciones
+armando.agregarCalificacion(DAWEB, 2.1);
+antonio.agregarCalificacion(DAWEB, 9);
+antonio.agregarCalificacion(DAWEB, 8);
+antonio.agregarCalificacion(IAB, 8);
+
+// Mostrar Calificaciones del Estudiante
+console.log(DAWEB.obtenerCalificaciones(armando.id),
+            DAWEB.obtenerCalificaciones(antonio.id),
+            IAB.obtenerCalificaciones(antonio.id)
+);
+
+// Mostrar Promedio Total de una Asignatura
+console.log(DAWEB.calcularPromedioGeneral(),
+            IAB.calcularPromedioGeneral()
+);
+
+// Mostrar Promedio Total de un Estudiante
+console.log(armando.calcularPromedioEstudiante(),
+            antonio.calcularPromedioEstudiante()
+);
+
+// Mostrar Promedio de un Estudiante en una Asignatura
+console.log(DAWEB.calcularPromedioEstudiante(antonio.id));
+
+// Modificar ID
+console.log(parseInt(armando.id.substring(3)));
+
+// Mostrar ID antes y despues de eliminar
+console.log(armando.id, antonio.id, marcos.id, andrea.id);
+
+lista.eliminarEstudiante(antonio);
+lista.eliminarEstudiante(marcos);
+lista.eliminarEstudiante(andrea);
+
+console.log(Estudiante.id_Disponibles);
+
+const jesus = new Estudiante("Jesus Perez",26,dir1);
+const maria = new Estudiante("Maria Perez",26,dir1);
+
+lista.agregarEstudiante(jesus);
+lista.agregarEstudiante(maria);
+
+// console.log(armando.id, maria.id, jesus.id, claudia.id, 
+//             Estudiante.id_Disponibles
+// );
+console.log(lista.listarEstudiantes());
+
+┌───────────────────┐
+│ PRUEBAS GENERALES │
+└───────────────────┘
+
+/* Pruebas de IDs
+const valor = "Armando";
+const x = valor.substring(0, 3).toUpperCase();
+const y = 10;
+const z = `${x}${y.toString().padStart(3,"0")}`;
+console.log(z);
+*/
+
+/* Prueba Expresiones Regulares 
+const valor = "Armando 1II";
+
+(/^[a-zA-ZáéíóúÁÉÍÓÚ ]+$/).test(valor) ? console.log("pedro") : console.log("jose");
+*/
+
+/* Manejo de Diccionarios o Mapas 
+let mapa = new Map();
+let mapa2 = new Map();
+
+mapa.set("a", [10]);
+mapa.get("a").push(5);
+mapa.get("a").push(4);
+mapa.set("b", [4]);
+mapa.get("b").push(5);
+mapa.get("b").push(8);
+
+// Id Especifico
+if (mapa.has("a") && mapa.get("a").length > 0) {
+    const sumar = mapa.get("a").reduce((total, valorAct) => total + valorAct, 0);
+    console.log(sumar, mapa.get("a").length, sumar / mapa.get("a").length);
+}  
+
+// General
+let total = 0;
+let cant_Est = 1;
+mapa.forEach((notas, ids) => {
+
+    let sumaNot = 0;
+    sumaNot = notas.reduce((total, valorAct) => total + valorAct, 0);
+    total += sumaNot;
+
+    cant_Est += notas.length;
+});
+
+console.log(total,
+            cant_Est-1, 
+            total / (cant_Est-1));
+
+console.log(mapa, 
+            mapa.get("a"),
+            mapa.get("b")
+);
+
+// Eliminar notas de Asignatura
+if (mapa.has("a")) {
+    mapa.set("a", []);
+}
+
+console.log(mapa);
+*/
+
+/* Prueba de funciones 
+function funcioncilla(...valor) {
+    console.log(valor, typeof valor);
+};
+
+funcioncilla(1,2,3,4);
+*/
+
+┌────────────────────────────┐
+│ PARTES DEL CODIGO QUITADAS │
+└────────────────────────────┘
+
+delCalificacion(id_Estudiante) {
+
+        if (this.#calificaciones.has(id_Estudiante)) {
+            
+            this.#calificaciones.set(id_Estudiante, []);
+        }
+    }
+
+┌─────────────────┐
+│ FUTURAS MEJORAS │
+└─────────────────┘
+1º -
+    - Que cuando se elimine un Estudiante, tambien desaparezca del array calificaciones de la clase Asignatura.
+    - Que cuando se elimine una Asignatura, tambien desaparezca del array asignatura de la clase Estudiante.
