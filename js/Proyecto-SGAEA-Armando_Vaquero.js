@@ -294,7 +294,7 @@ class Asignatura{
     calcularPromedioGeneral() {
 
         let total_Notas = 0;
-        let cantidad_Notas = 1; // Para evitar el error division por 0 (le resto 1 al final).
+        let cantidad_Notas = 0;
     
         this.#calificaciones.forEach((notas, id) => {
 
@@ -305,7 +305,7 @@ class Asignatura{
             cantidad_Notas += notas.length;
         });
 
-        return total_Notas > 0 ? (total_Notas / (cantidad_Notas - 1)).toFixed(2) : "Sin calificaciones"; 
+        return total_Notas > 0 ? (total_Notas / cantidad_Notas).toFixed(2) : "Sin calificaciones"; 
     }
 
     /**
@@ -553,7 +553,7 @@ class Estudiante extends Persona{
     promedioTotalEstudiante() {
 
         let total_Notas = 0;
-        let cantidad_Notas = 1;
+        let cantidad_Notas = 0;
 
         this.#asignatura.forEach(materia => {
 
@@ -564,7 +564,7 @@ class Estudiante extends Persona{
             cantidad_Notas += notas.length;
         });
 
-        return total_Notas > 0 ? (total_Notas / (cantidad_Notas - 1)).toFixed(2) : "Sin evaluar";
+        return total_Notas > 0 ? (total_Notas / cantidad_Notas).toFixed(2) : "Sin evaluar";
     }
 
     /**
