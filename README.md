@@ -13,4 +13,3 @@ Para ejecutar el programa hay que hacer lo siguiente:
 1. Abrir una pestaña nueva.
 2. Abrir las "Herramientas de Desarrollo" (Ctrl + Mayús + I).
 3. Pegar esta URL: https://armvv26.github.io/DWEC_Proyecto_SGAEA/ y entrar en la web.
->>>>>>> 8a8e5edd7fb2dcb447546260dd7c5a5bf09e0184
