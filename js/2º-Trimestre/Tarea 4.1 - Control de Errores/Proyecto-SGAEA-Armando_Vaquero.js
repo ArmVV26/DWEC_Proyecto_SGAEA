@@ -132,7 +132,7 @@ class Persona {
             this.#edad = edad;
             this.#direccion = direccion;    
         }else{
-            throw new Error("Error - El nombre debe de tener solo letras y espacios. | La edad tiene que estar entre los 6 y 30 años");
+            throw new Error("El nombre debe de tener solo letras y espacios. | La edad tiene que estar entre los 6 y 80 años");
         }
     }
 
@@ -236,7 +236,7 @@ class Asignatura{
             this.#nombre = nombre;
             this.#calificaciones = new Map();
         }else{
-            throw new Error("Error - El nombre de la Asignatura es erroneo");
+            throw new Error("El nombre de la Asignatura es erroneo");
         }
     }
 
@@ -270,11 +270,11 @@ class Asignatura{
     addCalificacion(id_Estudiante, calificacion) {
 
         if (typeof calificacion !== "number" || isNaN(calificacion)) {
-            throw new Error(`Error - La calificación asignada a la asignatura ${this.nombre} no es un numero`);
+            throw new Error(`La calificación asignada a la asignatura ${this.nombre} no es un numero`);
         }
 
         if (calificacion < 0 || calificacion > 10) {
-            throw new Error(`Error - La calificacón asignada a la asignatura ${this.#nombre} no es valida (0 a 10)`);
+            throw new Error(`La calificacón asignada a la asignatura ${this.#nombre} no es valida (0 a 10)`);
         }
          
         if (this.#calificaciones.has(id_Estudiante)) {
@@ -442,33 +442,29 @@ class Estudiante extends Persona{
      */
     constructor(nombre, edad, direccion) {
         
-        try{
-            super(nombre, edad, direccion); // Llamar al constructor de la clase Persona.
-
-            const id_gen_letras = nombre.substring(0,3).toUpperCase(); // Genero las letras del ID del Estudiante.
-            
-            if (Estudiante.id_Disponibles.length !== 0) {
-
-                const id_Minimo = Math.min(...Estudiante.id_Disponibles); // Consigo el valor del minimo ID.
-                const id_gen_numeros = id_Minimo.toString().padStart(3,"0"); // Genero el codigo de numeros del Id.
-                this.#id = `${id_gen_letras}${id_gen_numeros}`; // Añado el ID.
-
-                const posicion = Estudiante.id_Disponibles.indexOf(id_Minimo); // Posición del ID usado.
-                Estudiante.id_Disponibles.splice(posicion,1); // Eliminar posición de id_Disponibles.
-            }else{
-                const id_gen_numeros = Estudiante.id_contador.toString().padStart(3,"0"); 
-
-                this.#id = `${id_gen_letras}${id_gen_numeros}`; // Añado el ID.
-
-                Estudiante.id_contador++; // Aumenta el id_contador.
-            }
-
-            this.#asignatura = [];
-            this.#historial = [];
+        super(nombre, edad, direccion); // Llamar al constructor de la clase Persona.
         
-        }catch (error){
-            console.error("Error - No se pudo crear el Estuadiante: "+ error.message);
+        const id_gen_letras = nombre.substring(0,3).toUpperCase(); // Genero las letras del ID del Estudiante.
+            
+        if (Estudiante.id_Disponibles.length !== 0) {
+
+            const id_Minimo = Math.min(...Estudiante.id_Disponibles); // Consigo el valor del minimo ID.
+            const id_gen_numeros = id_Minimo.toString().padStart(3,"0"); // Genero el codigo de numeros del Id.
+            this.#id = `${id_gen_letras}${id_gen_numeros}`; // Añado el ID.
+
+            const posicion = Estudiante.id_Disponibles.indexOf(id_Minimo); // Posición del ID usado.
+            Estudiante.id_Disponibles.splice(posicion,1); // Eliminar posición de id_Disponibles.
+        }else{
+            const id_gen_numeros = Estudiante.id_contador.toString().padStart(3,"0"); 
+
+            this.#id = `${id_gen_letras}${id_gen_numeros}`; // Añado el ID.
+
+            Estudiante.id_contador++; // Aumenta el id_contador.
         }
+        
+        this.#asignatura = [];
+        this.#historial = [];
+        
     }
     
     /**
@@ -1131,22 +1127,30 @@ function menuPrincipal() {
                         
                         const localidad = prompt("Introduce la localidad:");
                         console.log(`  - Localidad: ${localidad}`);
+                         
+                        try{
+                            // Creo una instancia de Dirección y de Estudiante.
+                            const dir_Nueva = new Direccion(calle, numero, piso, cod_postal, provincia, localidad);
+                            const est_Nuevo = new Estudiante(nombre_Est, edad, dir_Nueva);
 
-                        // Creo una instancia de Dirección y de Estudiante.
-                        const dir_Nueva = new Direccion(calle, numero, piso, cod_postal, provincia, localidad);
-                        const est_Nuevo = new Estudiante(nombre_Est, edad, dir_Nueva);
-
-                        // Guardo al Estudiante en la Lista.
-                        console.log(lista.agregarEstudiante(est_Nuevo));
+                            // Guardo al Estudiante en la Lista.
+                            console.log(lista.agregarEstudiante(est_Nuevo));
+                        }catch(error) {
+                            console.error("Error - No se pudo crear el Estudiante: "+ error.message);
+                        }
                         break;
 
                     case "2":
                         const nombre_Asig = prompt("Introduce el nombre de la asignatura:");
                         
-                        // Creo una instancia de Asignatura
-                        const asig_Nueva = new Asignatura(nombre_Asig);
+                        try{
+                            // Creo una instancia de Asignatura
+                            const asig_Nueva = new Asignatura(nombre_Asig);
 
-                        console.log(lista.agregarAsignatura(asig_Nueva));
+                            console.log(lista.agregarAsignatura(asig_Nueva));
+                        }catch(error) {
+                            console.error("Error - No se pudo crear la Asignatura: "+ error.message);
+                        }
                         break;
 
                     case "0":
@@ -1313,11 +1317,17 @@ function menuPrincipal() {
 
                     console.log("Indica la calificacion");
                     const calificacion = parseFloat(prompt("Indica la calificación a añadir: "));
-                    materia.addCalificacion(alumno.id, calificacion); // Añado la calificación.
 
-                    console.clear();
-                    console.log(`Al Estudiante ${alumno.nombre} se le ha añadido la nota ${calificacion} en la Asignatura ${materia.nombre}`);
+                    try{
+                        materia.addCalificacion(alumno.id, calificacion); // Añado la calificación.
 
+                        console.clear();
+                        console.log(`Al Estudiante ${alumno.nombre} se le ha añadido la nota ${calificacion} en la Asignatura ${materia.nombre}`);
+                    }catch(error) {
+                        console.clear();
+                        console.error("Error - No se pudo añadir la calificación: "+ error.message);
+                    }
+                    
                 }else if(pos_Materia === -1) {
                     console.clear();
                     console.log("Vovliendo al Menú Principal ...");
