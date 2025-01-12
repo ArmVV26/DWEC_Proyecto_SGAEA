@@ -10,6 +10,8 @@
     * Descripción:
         En este proyecto se gestiona los datos académicos de estudiantes y asignaturas, proporcionando
         funcionalidades como matriculación, desmatriculación, cálculo de promedios y búsquedas.  
+    
+    * Mi GitHub: https://github.com/ArmVV26/DWEC_Proyecto_SGAEA
 */
 /*
     ┌─────────────┐
