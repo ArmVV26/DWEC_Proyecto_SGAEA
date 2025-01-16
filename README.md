@@ -18,3 +18,12 @@
 
 ## TAREAS 2º TRIMESTRE
 - Tarea 4.1: La tarea 4.1 esta realizada en [Tarea 4-1-Proyecto-SGAEA.js](https://github.com/ArmVV26/DWEC_Proyecto_SGAEA/blob/main/js/2%C2%BA%20Trimestre/Tarea%204.1%20-%20Control%20de%20Errores/Tarea%204-1-Proyecto-SGAEA.js)
+- Tarea 4.3: La tarea 4.3 esta realizada en [Tarea 4.3 - JSDOC](https://github.com/ArmVV26/DWEC_Proyecto_SGAEA/tree/main/js/2%C2%BA%20Trimestre/Tarea%204.3%20-%20JSDOC)
+> ---
+> Para crear y compilar la documentación de JSDoc del proyecto es necesario seguir los siguientes pasos:
+> 1. Descargar los 3 archivos (jsdoc.json, package.json y Tarea 4-3-Proyecto-SGAEA.js).
+> 2. Abrir carpeta donde te lo has descargado con Visual Studio Code y abrir una terminal "Bash".
+> 3. Ejecutar el comando "npm install". Esto hará que se descarguen todas las dependencias que están indicadas en "package.json".
+> 4. Una vez todo descargado, ejecutar el comando "npm run todo". Están indicados en el apartado "scripts" de "package.json".
+> 5. Esto generará la carpeta "/docs" donde habrá un "index.html" que tendremos que iniciar para ver la documentación.
+> ---
