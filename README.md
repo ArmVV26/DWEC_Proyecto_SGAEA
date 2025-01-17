@@ -23,8 +23,8 @@
 > ---
 > Para crear y compilar la documentación de JSDoc del proyecto es necesario seguir los siguientes pasos:
 > 1. Descargar los archivos necesarios:
-> 1.1. Tarea 4.3: Descargar los archivos jsdoc.json, package.json y Tarea 4-3-Proyecto-SGAEA.js.
-> 1.2. Tarea 4.4: Descargar los archivos jsdoc.json, package.json y carpeta "src".
+>   - Tarea 4.3: Descargar los archivos jsdoc.json, package.json y Tarea 4-3-Proyecto-SGAEA.js.
+>   - Tarea 4.4: Descargar los archivos jsdoc.json, package.json y carpeta "src".
 > 2. Abrir carpeta donde te lo has descargado con Visual Studio Code y abrir una terminal "Bash".
 > 3. Ejecutar el comando "npm install". Esto hará que se descarguen todas las dependencias que están indicadas en "package.json".
 > 4. Una vez todo descargado, ejecutar el comando "npm run todo". Están indicados en el apartado "scripts" de "package.json".
