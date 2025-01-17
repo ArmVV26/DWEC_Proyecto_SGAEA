@@ -31,6 +31,6 @@
 > 5. Esto generará la carpeta "/docs" donde habrá un "index.html" que tendremos que iniciar para ver la documentación.
 >
 >> NOTA. En la Tarea 4.4 para ejecutar el codigo con "index.html" es necesario usar el "live-server".
->> Comando para instalar: `npm install -g live-server`
->> Comando para ejecutar el "live-server": `live-server`
+>> - Comando para instalar: `npm install -g live-server`
+>> - Comando para ejecutar el "live-server": `live-server`
 > ---
