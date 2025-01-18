@@ -80,11 +80,9 @@ Antes de generar la documentación, es necesario crear un archivo [*jsdoc.json*]
 
 Ahora, dentro del archivo que hemos generado antes, `package.json`, en el apartado *scripts* vamos a añadir:
 ```json
-...
 "documenta": "npx jsdoc -c jsdoc.json",
 "limpia": "rimraf docs",
 "todo": "npm-run-all limpia documenta"
-...
 ```
 - ***documenta***: Generará la documentación de *JSDoc*.
 - ***limpia***: Borrará la carpeta y los archivos que se han generado.
@@ -111,4 +109,4 @@ Esto hará que se descarguen todas las dependencias que están indicadas en `pac
 ```bash
 npm run todo
 ```
-1. Esto generará la carpeta `docs` donde habrá un `index.html` que tendremos que iniciar para ver la documentación.
+5. Esto generará la carpeta `docs` donde habrá un `index.html` que tendremos que iniciar para ver la documentación.
