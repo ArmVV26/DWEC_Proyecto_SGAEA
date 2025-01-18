@@ -6,7 +6,8 @@
 > El objetivo del proyecto es desarrollar un **Sistema de Gestión de Estudiantes y Asignaturas**, realizando tareas para complementarlo.
 >
 > Creado por: **Armando Vaquero Vargas**
-> ---
+
+---
 
 ## Estructura del Repositorio
 El respositorio está estructurado en dos carpetas principales:
