@@ -64,6 +64,7 @@ Para crear y compilar la documentación de JSDoc del proyecto, es necesario segu
 npm install
 ```
 Esto hará que se descarguen todas las dependencias que están indicadas en `package.json`.
+
 4. Una vez todo descargado, ejecutar el comando:
 ```bash
 npm run todo
