@@ -9,8 +9,7 @@
 En este apartado voy a documentar los pasos que he seguido para separar el código en módulos:
 
 ### 1. Identificar Estructura
-Lo primero que he hecho para separar el proyecto en diferentes módulos es identificar qué partes pueden dividirse en módulos. 
-En mi proyecto es sencillo identificar qué partes deben de ir separadas por módulos:
+Lo primero que hay que hacer es identificar qué partes pueden dividirse en módulos En mi proyecto es sencillo identificar qué partes deben de ir separadas por módulos:
 - Cada clase (`Asignatura`, `Direccion`, `Estudiante`, `Lista` y `Persona`) irá separada en sus respectivos módulos.
 - Todas las funciones, menos la principal (`menuPrincipal`), irán también separadas en un módulo.
 - Y un módulo `main` que contendrá el código principal.
@@ -58,7 +57,7 @@ Pero en el archivo `jsdoc.json`, en el apartado *include*, hay que poner la carp
 ## Funcionamiento
 Para crear y compilar la documentación de JSDoc del proyecto, es necesario seguir los siguientes pasos:
 1. Descargar los archivos `jsdoc.json`, `package.json` y la carpeta `src`.
-2. Abrir carpeta donde te lo has descargado con Visual Studio Code y abrir una terminal *Bash*.
+2. Abrir carpeta donde te lo has descargado con *Visual Studio Code* y abrir una terminal *Bash*.
 3. Ejecutar el comando:
 ```bash
 npm install

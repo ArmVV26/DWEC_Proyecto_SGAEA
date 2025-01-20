@@ -1,19 +1,18 @@
 import path from 'path';
-import { merge } from 'webpack-merge';
-import common from './webpack.common.js';
+import { merge } from 'webpack-merge'; // Permite combinar archivos entre webpack.common y el .legacy
+import common from './webpack.common.js'; // Se importa la configuración común.
 
 export default merge(common, {
-    // target: ['web', 'es5'], // Se puede omitir
     output: {
-        filename: 'bundle.legacy.js',
+        filename: 'bundle.legacy.js', // Nombre del archivo de salida
     },
     module: { 
         rules:  [
             {
-                test: /\.js$/,
-                exclude: /node_modules/,
+                test: /\.js$/, // Aplica esta regla a todos los archivos *.js
+                exclude: /node_modules/, // Excluye a los archivos de node_modules
                 use: {
-                    loader: 'babel-loader',
+                    loader: 'babel-loader', // Se usa babel para transpilar el código
                 }
             },
         ],
