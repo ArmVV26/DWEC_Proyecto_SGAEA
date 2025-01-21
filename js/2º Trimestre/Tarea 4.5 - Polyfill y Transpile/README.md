@@ -162,6 +162,9 @@ npm run todo
 live-server
 ```
 
+### 7. Comprobar resultado con BrowserStack
+
+
 ---
 
 ## Funcionamiento
