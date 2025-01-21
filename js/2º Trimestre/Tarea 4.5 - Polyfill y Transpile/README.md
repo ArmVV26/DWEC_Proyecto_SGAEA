@@ -162,8 +162,27 @@ npm run todo
 live-server
 ```
 
-### 7. Comprobar resultado con BrowserStack
+### 7. Comprobar resultado con BrowserStack y Netlifly
+Para comprobar que está optimizado para navegadores antiguos, vamos a usar *Netlifly* para desplegar una web y *BrowserStack* para probar esta web en diferentes navegadores y versiones.
+El ***Proceso para Crear la Web*** con *Netlifly* es simple:
+1. Entramos en [Netlifly](https://www.netlify.com/) y seleccionamos la opción que pone **Deploy to Netlifly**.
+2. Iniciamos sesión con *GitHub*.
+3. Seleccionamos la opción **Deploy a new site** e indicamos el repositorio que vamos a usar.
+4. En la configuración indicamos un nombre y en la opción que pone **Publish Directory** le indicamos la ubicación del fichero `index.html` que queremos usar.
+![Publish Directory](../img-documentar/Publish-Directory.PNG)
+5. Una vez indicado esto, le damos a **Deploy Site** y esperamos a que la página se despliegue.
+![Pagina Desplegada](../img-documentar/Pagina-Desplegada.PNG)
 
+Para ***Comprobar con Navegadores Antiguos*** usando *BrowserStack* hay que hacer lo siguiente:
+1. Iniciamos sesión con alguna cuenta de *Google*.
+2. Ahora le indicaremos el navegador que queramos y la versión que queremos usar.
+3. Se inciará la opción que elijamos. Cuando se inicie, solamente tendremos 1 minuto para probarlo, por lo que hay que hacer la comprobación rápido.
+4. Cuando se inicie, pegamos la URL de nuestro sitio web de *Netlifly* y comprobamos si funciona o no.
+
+En mi caso, he probado con ***Google Chrome V. 109***, ***Safari V. 18.1*** y ***Firefox V. 115***. Las capturas están en ese orden.
+![Google Chrome V. 109](../img-documentar/Google-Chrome-109.PNG)
+![Safari V. 18.1](../img-documentar/Safari-18.1.PNG)
+![Firefox V. 115](../img-documentar/Firefox-115.PNG)
 
 ---
 
