@@ -29,9 +29,9 @@ Para la configuración de **Parcel**, vamos a hacer dos cosas:
    - ***limpia-parcel***: Elimina los ficheros que genera *Parcel*.
    - ***generar-parcel***: Ejecuta el script ***limpia-parcel***, ***dev*** y ***build***
 
-2. Modificar el fichero `src/index.html` y añadir la siguiente linea en el *body*:
+2. Modificar el fichero `src/index.html` y añadir la siguiente linea en el *head*:
 ```html
-<script type="module" src="main.js"></script>
+<script type="module" src="main.js" defer></script>
 ``` 
 
 ### 3. Comprobar el resultado
