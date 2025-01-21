@@ -24,6 +24,11 @@ Contiene todos los archivos donde se ha realizado el proyecto. La organización 
     + **Tarea 4.1 - Control de Errores**: En esta *Tarea* había que implementar de forma correcta las declaraciones **if** y los bloques **try..catch**, de forma correcta.
     + **Tarea 4.3 - JSDOC**: En esta *Tarea* había que comentar con **JSDOC** el proyecto y después generar la documentación con **Node**.
     + **Tarea 4.4 - Módulos**: En esta *Tarea* había que dividir el proyecto en diferentes módulos de forma correcta.
+    + **Tarea 4.5 - Polyfill y Transpile**: En esta *Tarea* había que transpilar/compilar el proyecto para que fuese compatible con navegadores antiguos.
+    + **Tarea 4.5 - Polyfill y Transpile-(Parcel)**: Esta *Tarea* tiene la misma funcionalidad que la anterior, pero esta realizada con **Parcel**.
+
+> ***NOTA***: En todas las *Tareas* se encuentra una documentación donde se explica el proceso de realización que se ha llevado en cada una.
+
 
 > ---
 > ## Sistema de Gestión Académica de Estudiantes y Asignaturas
