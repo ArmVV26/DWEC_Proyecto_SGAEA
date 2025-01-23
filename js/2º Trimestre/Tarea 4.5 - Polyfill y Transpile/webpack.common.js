@@ -16,7 +16,7 @@ export default {
             template: './src/index.html', // Arhivo base de HTML
             filename: 'index.html', // Nombre del fichero generado
             scriptLoading: 'module', // Carga los modulos
-            inject: 'body', // Inserta los scripts antes de cerrar el body
+            inject: 'head', // Inserta los scripts antes de cerrar el head
         }),
     ],
 }
