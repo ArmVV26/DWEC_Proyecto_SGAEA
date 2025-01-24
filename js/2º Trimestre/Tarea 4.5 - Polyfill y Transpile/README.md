@@ -18,7 +18,7 @@ Lo primero que hay que hacer es instalar las herramientas (paquetes) necesarias 
 1. **Webpack**: Herramienta que permite empaquetar el código y todas las dependencias del proyecto.
     - **webpack-cli**: Proporciona un set de comandos para configurar *Webpack*.
     - **webpack-merge**: Proporciona la función *merge* que permite combinar configuraciones de *Webpack*.
-    - **html-webpack-plugin**: Genera un *HTML* asociado con el paquete *Webpack* generado.
+    - **copy-webpack-plugin**: Permite copiar un archivo (en este caso un *HTML*) de un directorio a otro usando *Webpack*.
 2. **Babel**: Permite transpilar el código.
     - **babel-loader**: Permite usar *Babel* con *Webpack* para transpilar el código.
     - **@babel/core**: Núcleo de *Babel*.
@@ -36,11 +36,31 @@ npm install --save-dev core-js cross-env regenerator-runtime
 
 > ***NOTA***: Es necesario tener en cuenta que para realizar de forma correcta esta tarea es necesario haber hecho la configuración e instalación de las anteriores tareas con sus respectivas herramientas y paquetes.
 
-### 3. *Webpack*
+### 3. *Index.html*
+Para poder comprobar el funcionamiento de los archivos transpilados / compilados que vamos a generar con *Webpack* es necesario asociar estos scripts a un `index.html`. Para ello lo que vamos a hacer es un archivo `index.html` en el que vamos a incluir los dos scripts que vamos a generar. El contenido del `index.html` es:
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto SGAEA</title>
+    <script defer type="module" src="bundle.modern.js"></script>
+    <script defer src="bundle.legacy.js"></script>
+</head>
+<body>
+    <h1>Proyecto de Sistema de Gestion Academico de Estudiantes y Asignaturas</h1>
+</body>
+</html>
+```
+Cuando generemos los arcvhios `bundle.x.js`, el archivo `index.html` se copiara en las respectivas carpetas que se van a generar, para posteriormente comprobar su funcionalidad.
+
+
+### 4. *Webpack*
 Para configurar *Webpack*, es necesario crear 3 ficheros:
 - `webpack.common.js`: Define la configuración común para el desarrollo y la producción. El contenido es:
 ```js
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 import path from 'path';
 
 export default {   
@@ -52,13 +72,12 @@ export default {
     },
     mode: process.env.modo, // De que modo queremos que compile.
 
-    // Plugin para generar un HTML con webpack
+    // Plugin para copiar un HTML con webpack
     plugins: [
-        new HtmlWebpackPlugin({
-            template: './src/index.html', // Arhivo base de HTML
-            filename: 'index.html', // Nombre del fichero generado
-            scriptLoading: 'module', // Carga los modulos
-            inject: 'body', // Inserta los scripts antes de cerrar el body
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: './src/index.html', to: '.' }, // Copia el index.html al directorio base (development o production)
+            ],
         }),
     ],
 }
@@ -101,7 +120,7 @@ export default merge(common, {
 });
 ``` 
 
-### 4. *Babel*
+### 5. *Babel*
 Por otro lado, para configurar *Babel* es necesario crear un archivo de configuración llamado `babel.config.js`, donde se define cómo *Babel* debe de transpilar el código en función de los navegadores objetivo. El contenido es:
 ```js
 export default {   
@@ -118,7 +137,7 @@ export default {
 }
 ```
 
-### 5. Creación de los scripts
+### 6. Creación de los scripts
 Una vez instalados y configurados los diferentes paquetes y archivos, lo que hay que crear son los *scripts* necesarios para realizar el proceso. Para ello nos vamos al apartado de *scripts* del archivo `package.json` y ponemos lo siguiente:
 ```json
 "antiguo": "cross-env-shell webpack --config webpack.legacy.js --mode $modo",
@@ -143,12 +162,12 @@ Una vez instalados y configurados los diferentes paquetes y archivos, lo que hay
 > - *run-s*: Permite ejecutar scripts de forma secuencial (*npm-run-all*).  
 
 
-### 6. Generar y comprobar resultado
+### 7. Generar y comprobar resultado
 Teniendo los *scripts* ya definidos en el archivo `package.json`, ahora lo que tenemos que hacer es:
 1. Abrir una terminal. En mi caso, uso la terminal de *Git bash* de *Visual Studio Code*.
 2. Entramos en la carpeta donde estén todos los archivos que acabamos de crear y ejecutamos el comando:
 ```bash
-npm run todo
+npm run generar-bundle
 ```
 
 3. Esto generará la carpeta `compilado` y dentro de esta habrá dos carpetas que contendrán los mismos ficheros (`bundle.legacy.js`, `bundle.modern.js` e `index.html`) pero diferentes:
@@ -157,12 +176,12 @@ npm run todo
 
 4. Por último, para comprobar el resultado, se tendría que hacer usando un *live-server* (Explicado en la [Tarea 4.4 - Modulos](https://github.com/ArmVV26/DWEC_Proyecto_SGAEA/tree/main/js/2%C2%BA%20Trimestre/Tarea%204.4%20-%20Modulos#3-comprobar-funcionalidad)). Para ello:
    4.1. Nos iremos dentro del archivo `compilado/production`.
-   4.2. Ejecutamos el siguiente comando que nos abrirá una pestaña en nuestro navegador principal con el `index.html` que tiene asociado el `Bundle`.      
+   4.2. Ejecutamos el siguiente comando que nos abrirá una pestaña en nuestro navegador principal con el `index.html` que tiene asociado los `Bundle`.      
 ```bash
 live-server
 ```
 
-### 7. Comprobar resultado con BrowserStack y Netlifly
+### 8. Comprobar resultado con BrowserStack y Netlifly
 Para comprobar que está optimizado para navegadores antiguos, vamos a usar *Netlifly* para desplegar una web y *BrowserStack* para probar esta web en diferentes navegadores y versiones.
 El ***Proceso para Crear la Web*** con *Netlifly* es simple:
 1. Entramos en [Netlifly](https://www.netlify.com/) y seleccionamos la opción que pone **Deploy to Netlifly**.

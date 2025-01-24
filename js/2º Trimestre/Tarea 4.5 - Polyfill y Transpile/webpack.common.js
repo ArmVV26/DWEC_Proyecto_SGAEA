@@ -1,4 +1,4 @@
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CopyWebpackPlugin from 'copy-webpack-plugin';
 import path from 'path';
 
 export default {   
@@ -10,13 +10,12 @@ export default {
     },
     mode: process.env.modo, // De que modo queremos que compile.
 
-    // Plugin para generar un HTML con webpack
+    // Plugin para copiar un HTML con webpack
     plugins: [
-        new HtmlWebpackPlugin({
-            template: './src/index.html', // Arhivo base de HTML
-            filename: 'index.html', // Nombre del fichero generado
-            scriptLoading: 'module', // Carga los modulos
-            inject: 'head', // Inserta los scripts antes de cerrar el head
+        new CopyWebpackPlugin({
+            patterns: [
+                { from: './src/index.html', to: '.' }, // Copia el index.html al directorio base (development o production)
+            ],
         }),
     ],
 }
