@@ -6,4 +6,5 @@ export default merge(common, {
     output: {
         filename: 'bundle.modern.js', // Nombre del archivo de salida
     },
+    name: 'modern', // Identificar esta configuración
 });

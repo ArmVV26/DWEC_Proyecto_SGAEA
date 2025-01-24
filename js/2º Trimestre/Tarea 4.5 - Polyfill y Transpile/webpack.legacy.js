@@ -6,6 +6,7 @@ export default merge(common, {
     output: {
         filename: 'bundle.legacy.js', // Nombre del archivo de salida
     },
+    name: 'legacy', // Identificar esta configuración
     module: { 
         rules:  [
             {
