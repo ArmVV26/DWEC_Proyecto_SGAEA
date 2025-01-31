@@ -81,12 +81,12 @@ Antes de generar la documentación, es necesario crear un archivo [*jsdoc.json*]
 Ahora, dentro del archivo que hemos generado antes, `package.json`, en el apartado *scripts* vamos a añadir:
 ```json
 "doc": "npx jsdoc -c jsdoc.json",
-"limpia-doc": "rimraf docs",
-"generar-jsdoc": "npm-run-all limpia-doc doc"
+"limpia:doc": "rimraf docs",
+"generar:jsdoc": "npm-run-all limpia:doc doc"
 ```
 - ***doc***: Generará la documentación de *JSDoc*.
-- ***limpia-doc***: Borrará la carpeta y los archivos que se han generado.
-- ***generar-jsdoc***: Ejecutará ambos comandos.
+- ***limpia:doc***: Borrará la carpeta y los archivos que se han generado.
+- ***generar:jsdoc***: Ejecutará ambos comandos.
 
 Teniendo todo esto configurado, ya podremos generar la documentación del proyecto con *JSDoc*. Para ello tendremos que poner el comando:
 ```bash
@@ -107,6 +107,6 @@ npm install
 Esto hará que se descarguen todas las dependencias que están indicadas en `package.json`.
 4. Una vez todo descargado, ejecutar el comando:
 ```bash
-npm run generar-jsdoc
+npm run generar:jsdoc
 ```
 5. Esto generará la carpeta `docs` donde habrá un `index.html` que tendremos que iniciar para ver la documentación.

@@ -6,14 +6,14 @@
   "main": "src/main.js",
   "scripts": {
     "doc": "npx jsdoc -c jsdoc.json",
-    "limpia-doc": "rimraf docs",
-    "generar-jsdoc": "npm-run-all limpia-doc doc",
+    "limpia:doc": "rimraf docs",
+    "generar:jsdoc": "npm-run-all limpia:doc doc",
     "antiguo": "cross-env-shell webpack --config webpack.legacy.js --mode $modo",
     "moderno": "cross-env-shell  webpack --config webpack.modern.js --mode $modo",
     "des": "cross-env-shell modo=development run-s antiguo moderno",
     "prod": "cross-env-shell modo=production run-s antiguo moderno",
-    "limpia-com": "rimraf compilado",
-    "generar-bundle": "run-s limpia-com des prod"
+    "limpia:com": "rimraf compilado",
+    "generar:bundle": "run-s limpia:com des prod"
   },
   "author": "armando",
   "license": "ISC",

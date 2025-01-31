@@ -66,6 +66,6 @@ Esto hará que se descarguen todas las dependencias que están indicadas en `pac
 
 4. Una vez todo descargado, ejecutar el comando:
 ```bash
-npm run generar-jsdoc
+npm run generar:jsdoc
 ```
 5. Esto generará la carpeta `docs` donde habrá un `index.html` que tendremos que iniciar para ver la documentación.
