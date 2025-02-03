@@ -5,8 +5,8 @@
   "main": "Tarea 4-3-Proyecto-SGAEA.js",
   "scripts": {
     "doc": "npx jsdoc -c jsdoc.json",
-    "limpia-doc": "rimraf docs",
-    "generar-jsdoc": "npm-run-all limpia-doc doc"
+    "limpia:doc": "rimraf docs",
+    "generar:jsdoc": "npm-run-all limpia:doc doc"
   },
   "author": "Armando Vaquero Vargas",
   "license": "ISC",

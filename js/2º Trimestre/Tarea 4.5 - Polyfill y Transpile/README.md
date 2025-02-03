@@ -144,15 +144,15 @@ Una vez instalados y configurados los diferentes paquetes y archivos, lo que hay
 "moderno": "cross-env-shell  webpack --config webpack.modern.js --mode $modo",
 "des": "cross-env-shell modo=development run-s antiguo moderno",
 "prod": "cross-env-shell modo=production run-s antiguo moderno",
-"limpia": "rimraf compilado",
-"todo": "run-s limpia des prod"
+"limpia:com": "rimraf compilado",
+"generar:bundle": "run-s limpia:com des prod"
 ```
 - ***antiguo***: Ejecuta *Webpack* usando la configuración definida en `webpack.legacy.js` para generar un *Bundle* compatible con navegadores antiguos. La variable **$modo** define el modo de compilación (**development** o **production**).
 - ***moderno***: Hace lo mismo que el comando anterior, pero usando la configuración definida en `webpack.modern.js` para generar un *Bundle* para navegadores modernos.
 - ***des***: Ejecuta los scripts ***antiguo*** y ***moderno*** en modo **development**.
 - ***prod***: Lo mismo que el anterior, pero en modo **production**.
-- ***limpia-com***: Elimina la carpeta `compilado`, que es la carpeta generada.
-- ***generar-bundle***: Ejecuta el script ***limpia***, después ***des*** y por último ***prod***
+- ***limpia:com***: Elimina la carpeta `compilado`, que es la carpeta generada.
+- ***generar:bundle***: Ejecuta el script ***limpia***, después ***des*** y por último ***prod***
 
 > ***DETALLES TÉCINCOS***:
 > - *cross-env-shell*: Permite definir variables de entorno de forma compatible en todos los SO.
