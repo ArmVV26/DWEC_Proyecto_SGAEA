@@ -19,15 +19,13 @@ npm install --save-dev parcel
 Para la configuración de **Parcel**, vamos a hacer dos cosas:
 1. Añadir los siguientes *scripts* al archivo `package.json`:
 ```json
-"dev": "parcel src/index.html",
-"build": "parcel src/index.html",
-"limpia-parcel": "rimraf run-s .parcel-cache dist",
-"generar-parcel": "run-s limpia-parcel dev build"
+"dev:parcel": "parcel src/index.html",
+"build:parcel": "parcel src/index.html",
+"limpia:parcel": "rimraf dist .parcel-cache"
 ```
-   - ***dev***: Inciará un servidor local (http://localhost:1234).
-   - ***build***: Permite generar los archivos finales optimizados para producción.
-   - ***limpia-parcel***: Elimina los ficheros que genera *Parcel*.
-   - ***generar-parcel***: Ejecuta el script ***limpia-parcel***, ***dev*** y ***build***
+   - ***dev:parcel***: Inciará un servidor local (http://localhost:1234).
+   - ***build:parcel***: Permite generar los archivos finales optimizados para producción.
+   - ***limpia:parcel***: Elimina los ficheros que genera *Parcel*.
 
 2. Modificar el fichero `src/index.html` y añadir la siguiente linea en el *head*:
 ```html
@@ -35,9 +33,10 @@ Para la configuración de **Parcel**, vamos a hacer dos cosas:
 ``` 
 
 ### 3. Comprobar el resultado
-Una vez tengamos todo lo anterior configurado, lo que tenemos que hacer es ejecutar el comando:
+Una vez tengamos todo lo anterior configurado, lo que tenemos que hacer es ejecutar los comandos:
 ```bash
-npm run generar-parcel
+npm run dev:parcel
+npm run build:parcel
 ```
 Y al ejecutar este comando, entrar en la web http://localhost:1234 y comprobar que todo funciona correctamente.
 
@@ -53,8 +52,9 @@ npm install
 ```
 Esto hará que se descarguen todas las dependencias que están indicadas en `package.json`.
 
-4. Una vez todo descargado, ejecutar el comando:
+4. Una vez todo descargado, ejecutar los comandos:
 ```bash
-npm run generar-parcel
+npm run dev:parcel
+npm run build:parcel
 ```
 5. Esto iniciará un servidor local (http://localhost:1234) donde podras ver tu código en funcionamiento.

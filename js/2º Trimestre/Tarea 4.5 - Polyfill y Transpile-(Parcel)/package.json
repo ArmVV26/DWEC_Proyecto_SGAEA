@@ -10,8 +10,7 @@
     "generar:jsdoc": "npm-run-all limpia-doc doc",
     "dev:parcel": "parcel src/index.html",
     "build:parcel": "parcel src/index.html",
-    "limpia": "rimraf dist .parcel-cache",
-    "todo:parcel": "run-s limpia && run-p dev:parcel build:parcel"
+    "limpia": "rimraf dist .parcel-cache"
   },
   "author": "armando",
   "license": "ISC",
