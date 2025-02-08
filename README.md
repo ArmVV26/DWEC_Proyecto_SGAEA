@@ -1,13 +1,11 @@
 # DWEC_Proyecto_SGAEA
-> ---
+> [!NOTE]
 > ## Descripción del Repositorio
 > Este repositorio contiene el proyecto **SGAEA**, desarrollado para la asignatura **Desarrollo Web en Entorno Cliente** como parte del curso de **2º DAW**.
 >
 > El objetivo del proyecto es desarrollar un **Sistema de Gestión de Estudiantes y Asignaturas**, realizando tareas para complementarlo.
 >
 > Creado por: **Armando Vaquero Vargas**
->
-> ---
 
 ## Estructura del Repositorio
 El repositorio está estructurado en dos carpetas principales:
@@ -27,10 +25,11 @@ Contiene todos los archivos donde se ha realizado el proyecto. La organización 
     + **Tarea 4.5 - Polyfill y Transpile**: En esta *Tarea* había que transpilar/compilar el proyecto para que fuese compatible con navegadores antiguos.
     + **Tarea 4.5 - Polyfill y Transpile-(Parcel)**: Esta *Tarea* tiene la misma funcionalidad que la anterior, pero esta realizada con **Parcel**.
 
-> ***NOTA***: En todas las *Tareas* se encuentra una documentación donde se explica el proceso de realización que se ha llevado en cada una.
+> [!NOTE]
+> En todas las *Tareas* se encuentra una documentación donde se explica el proceso de realización que se ha llevado en cada una.
 
 
-> ---
+> [!TIP]
 > ## Sistema de Gestión Académica de Estudiantes y Asignaturas
 > Para ejecutar el programa hay que hacer lo siguiente:
 > ### 1º OPCIÓN
@@ -45,5 +44,3 @@ Contiene todos los archivos donde se ha realizado el proyecto. La organización 
 > 1. Abrir una pestaña nueva.
 > 2. Abrir las "Herramientas de Desarrollo" (Ctrl + Mayús + I).
 > 3. Pegar esta URL: https://armvv26.github.io/DWEC_Proyecto_SGAEA/ y entrar en la web.
->
-> ---
