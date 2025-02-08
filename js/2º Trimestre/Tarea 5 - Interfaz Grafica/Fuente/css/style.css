@@ -1,0 +1,105 @@
+
+/* Variables para estilos Globales */
+
+/* Paleta de colores para la web */
+:root {
+    --color-negro: #373F51;
+    --color-azul: #58A4B0;
+    --color-azul-claro: #A9BCD0;
+    --color-blanco: #D8DBE2;
+    --color-salmon: #DAA49A;
+}
+
+/* Estilos para resetear los valores predeterminados */
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
+
+/* Obtenido de https://uiverse.io/kennyotsu-monochromia/spotty-cheetah-65*/
+.container {
+    width: 100%;
+    height: 100%;
+    --color: #E1E1E1;
+    background-color: #F3F3F3;
+    background-image: linear-gradient(0deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent),
+        linear-gradient(90deg, transparent 24%, var(--color) 25%, var(--color) 26%, transparent 27%,transparent 74%, var(--color) 75%, var(--color) 76%, transparent 77%,transparent);
+    background-size: 55px 55px;
+  }
+
+/* Defino el estilo de los elementos */
+body {
+    font-family: Verdana;
+}
+
+/* Estilos de las tipografias */
+h1 {
+    font-size: 4rem;
+    color: var(--color-blanco);
+}
+h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+button {
+    font-size: 1rem;
+    color: var(--color-blanco);
+}
+
+/* Configuro el header */
+header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-negro);
+    padding: 1rem;
+    box-shadow: 0 10px 5px 0 var(--color-azul-claro);
+}
+
+/* Configuro el menu principal */
+.menu-principal {
+    margin-top: 1rem;
+}
+
+.menu-principal ul {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem; 
+}
+
+/* Estilo de los botones */
+button {
+    background-color: var(--color-azul);
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+
+button:hover {
+    color: var(--color-negro);
+    background-color: var(--color-azul-claro);
+}
+
+/* Configuro el estilo del main */
+main {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+/* Configuro el footer */
+footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    padding: 2rem;
+    text-align: center;
+    background-color: var(--color-negro);
+    color: var(--color-blanco);
+    box-shadow: 0 -5px 5px 0 var(--color-azul-claro);
+}
