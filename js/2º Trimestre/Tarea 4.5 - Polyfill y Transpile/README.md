@@ -67,6 +67,7 @@ export default {
     entry: './src/main.js',
     output: {
         path: path.resolve(process.cwd(), 'compilado', process.env.modo),
+        filename: 'bundle.js',
         // Dos modos de "compilacion": desarrollo y produccion.
         // Minifying
     },
@@ -117,6 +118,17 @@ export default merge(common, {
     output: {
         filename: 'bundle.modern.js', // Nombre del archivo de salida
     },
+    module: { 
+        rules:  [
+            {
+                test: /\.js$/, // Aplica esta regla a todos los archivos *.js
+                exclude: /node_modules/, // Excluye a los archivos de node_modules
+                use: {
+                    loader: 'babel-loader', // Se usa babel para transpilar el código
+                }
+            },
+        ],
+    },
 });
 ``` 
 
@@ -128,7 +140,7 @@ export default {
         [
             "@babel/preset-env",
             {
-                targets: "> 0.25%, not dead", // Esto es para la version de navegadores que queremos que soporte.
+                 targets: "> 0.25%, firefox>10, chrome>10, safari>10, not dead", // Esto es para la version de navegadores que queremos que soporte.
                 useBuiltIns: "usage", // Incluya solo los polyfills que necesitamos.
                 corejs: 3 // Version de corejs que estamos usando.
             }
@@ -188,9 +200,9 @@ El ***Proceso para Crear la Web*** con *Netlifly* es simple:
 2. Iniciamos sesión con *GitHub*.
 3. Seleccionamos la opción **Deploy a new site** e indicamos el repositorio que vamos a usar.
 4. En la configuración indicamos un nombre y en la opción que pone **Publish Directory** le indicamos la ubicación del fichero `index.html` que queremos usar.
-![Publish Directory](../img-documentar/Publish-Directory.PNG)
+![Publish Directory](../img-documentar/Tarea-4.5/Publish-Directory.PNG)
 5. Una vez indicado esto, le damos a **Deploy Site** y esperamos a que la página se despliegue.
-![Pagina Desplegada](../img-documentar/Pagina-Desplegada.PNG)
+![Pagina Desplegada](../img-documentar/Tarea-4.5/Pagina-Desplegada.PNG)
 
 Para ***Comprobar con Navegadores Antiguos*** usando *BrowserStack* hay que hacer lo siguiente:
 1. Iniciamos sesión con alguna cuenta de *Google*.
@@ -198,10 +210,10 @@ Para ***Comprobar con Navegadores Antiguos*** usando *BrowserStack* hay que hace
 3. Se inciará la opción que elijamos. Cuando se inicie, solamente tendremos 1 minuto para probarlo, por lo que hay que hacer la comprobación rápido.
 4. Cuando se inicie, pegamos la URL de nuestro sitio web de *Netlifly* y comprobamos si funciona o no.
 
-En mi caso, he probado con ***Google Chrome V. 109***, ***Safari V. 18.1*** y ***Firefox V. 115***. Las capturas están en ese orden.
-![Google Chrome V. 109](../img-documentar/Google-Chrome-109.PNG)
-![Safari V. 18.1](../img-documentar/Safari-18.1.PNG)
-![Firefox V. 115](../img-documentar/Firefox-115.PNG)
+En mi caso, he probado con ***Google Chrome V. 45***, ***Safari V. 11.1*** y ***Firefox V. 30***. Las capturas están en ese orden.
+![Google Chrome V. 45](../img-documentar/Tarea-4.5/Google-Chrome-45.PNG)
+![Safari V. 11.1](../img-documentar/Tarea-4.5/Safari-11.1.PNG)
+![Firefox V.30](../img-documentar/Tarea-4.5/Firefox-30.PNG)
 
 ---
 
