@@ -1,0 +1,45 @@
+/* Estilos para resetear los valores predeterminados */
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
+
+/* Defino el estilo de los elementos */
+body {
+    font-family: Verdana;
+}
+
+/* Configuro el header */
+header {
+    background-color: beige;
+}
+
+/* Configuro el nav */
+nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+nav h1 {
+    margin-bottom: 1rem;
+}
+
+nav ul {
+    display: flex;
+    gap: 1rem;
+}
+
+/* Estilo de los botones */
+button {
+    background-color: lightcoral;
+    padding: 0.5rem;
+    border: 1px solid lightgoldenrodyellow;
+    border-radius: 1rem;
+}

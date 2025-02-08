@@ -148,6 +148,9 @@ import {
  * 
  * @returns {void} No devuelve ningun valor.
  */
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 function mostrarEstudiantes(){
     document.getElementById("estudiante").textContent = lista.estudiantes.map(alumno => alumno.mostrarEstudiante());
 }

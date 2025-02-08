@@ -5,6 +5,7 @@ export default {
     entry: './src/main.js',
     output: {
         path: path.resolve(process.cwd(), 'compilado', process.env.modo),
+        filename: 'bundle.js',
         // Dos modos de "compilacion": desarrollo y produccion.
         // Minifying
     },
