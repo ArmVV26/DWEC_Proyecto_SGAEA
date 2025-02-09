@@ -38,7 +38,7 @@ body {
 
 /* Estilos de las tipografias */
 h1 {
-    font-size: 4rem;
+    font-size: 3rem;
     color: var(--color-blanco);
 }
 h2 {
@@ -69,6 +69,7 @@ header {
 .menu-principal ul {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     gap: 1rem; 
 }
 
@@ -88,8 +89,100 @@ button:hover {
 
 /* Configuro el estilo del main */
 main {
-    margin-top: 2rem;
+    margin: 2rem 0;
     text-align: center;
+}
+
+table {
+    margin: auto;
+    text-align: center;
+}
+
+table, th, td {
+    border: 2px solid var(--color-azul-claro);
+    border-collapse: collapse;
+}
+
+th{
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    color: var(--color-blanco);
+    background-color: var(--color-negro);
+}
+
+td {
+    padding: 1rem;
+}
+
+td button {
+    background-color: var(--color-negro);
+    color: var(--color-blanco);
+}
+
+td button:hover {
+    background-color: var(--color-blanco);
+    color: var(--color-negro);
+}
+
+tr {
+    background-color: var(--color-blanco);
+}
+
+tr:nth-child(2n+2) {
+    background-color: var(--color-azul);
+    color: var(--color-blanco);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    text-align: left;
+    width: 30rem;
+    padding: 0.5rem 2rem;
+    background-color: var(--color-negro);
+    border: 2px solid var(--color-azul);
+    border-radius: 2rem;
+}
+
+form h1 {
+    font-size: 2rem;
+    text-align: center;
+    border-bottom: 1px solid var(--color-azul);
+    margin-bottom: 0.5rem;
+    color: var(--color-salmon);
+}
+
+form h2 {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-top: 1rem;
+    color: var(--color-azul-claro);
+    border-bottom: 1px solid var(--color-azul);
+}
+
+label {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+    color: var(--color-blanco);
+}
+
+input {
+    padding: 0.5rem;
+    background-color: var(--color-blanco);
+    border: 2px solid var(--color-negro);
+    border-radius: 1rem;
+}
+
+input:focus {
+    border: 2px solid var(--color-salmon);
+}
+
+form button {
+    width: 10rem;
+    margin-top: 2rem;
+    align-self: center;
 }
 
 /* Configuro el footer */
@@ -97,9 +190,81 @@ footer {
     position: fixed;
     width: 100%;
     bottom: 0;
-    padding: 2rem;
+    padding: 1rem;
     text-align: center;
     background-color: var(--color-negro);
     color: var(--color-blanco);
     box-shadow: 0 -5px 5px 0 var(--color-azul-claro);
+}
+
+
+@media (min-width: 320px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    button {
+        font-size: 0.75rem;
+    }
+    .menu-principal ul {
+        flex-direction: column;
+        align-items: center;
+    }
+    form {
+        width: 14rem;
+    }
+    form h1 {
+        font-size: 1.5rem;
+    }
+    form h2 {
+        font-size: 1rem;
+    }
+    label {
+        font-size: 0.75rem;
+    }
+    th {
+        font-size: 0.75rem;
+        padding: 0.15rem;
+    }
+    td {
+        font-size: 0.75rem;
+        padding: 0.25rem;
+    }
+    footer {
+        font-size: 0.75rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    h1 {
+        font-size: 3rem;
+    }
+    button {
+        font-size: 1rem;
+    }
+    .menu-principal ul {
+        flex-direction: row;
+    }
+    form {
+        width: 30rem;
+    }
+    form h1 {
+        font-size: 2rem;
+    }
+    form h2 {
+        font-size: 1.5rem;
+    }
+    label {
+        font-size: 1rem;
+    }
+    th {
+        font-size: 1.5rem;
+        padding: 0.5rem;
+    }
+    td {
+        font-size: 1rem;
+        padding: 1rem;
+    }
+    footer {
+        font-size: 1rem;
+    }
 }

@@ -173,36 +173,17 @@ export class Asignatura{
 
     /**
      * @function
-     * @description Muestra una representación de los datos formateados de las Asignaturas y sus calificaciones.
+     * @description Envio los datos de la Asignatura en forma de matriz.
      * 
-     * @returns {string} Cadena con los datos de las Asignaturas formateados.
-     * 
-     * @example
-     * // Devuelve una cadena con los datos de las Asignaturas formateados.
-     * // Por ejemplo:
-     * // ───────────────────────────────
-     * //            DAWES
-     * // ===============================
-     * // - DAWES: 5 - 10 - 7 - 8
-     * // ------------------------------
-     * //   - Promedio = 7.50
+     * @returns {Object} Un objeto con los datos de la Asignatura.
      */
     mostrarAsignaturas() {
-        let mostrar_Asig = "─────────────────────────────── \n" +
-                           `            ${this.#nombre} \n` +
-                           "=============================== \n";
-        if (this.#calificaciones.size === 0) {
-            mostrar_Asig += "Sin calificaciones \n" +
-                            "============================== \n";  
-        }else {
-            this.#calificaciones.forEach((notas, id) => {
-                mostrar_Asig += `${id}: ${notas.join(" - ")} \n`;
-            });
-            mostrar_Asig += "------------------------------ \n" +
-                            `  - Promedio = ${this.calcularPromedioGeneral()} \n` +
-                            "────────────────────────────── \n";   
-        }
-
-        return mostrar_Asig;
+        return {
+            nombre: this.#nombre,
+            notas: Array.from(this.#calificaciones),
+            promedio: this.calcularPromedioGeneral(),
+        };
+        
+        
     }
 }

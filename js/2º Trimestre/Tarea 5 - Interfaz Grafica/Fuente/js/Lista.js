@@ -1,3 +1,7 @@
+// Importo las clases Estudiante y Asignatura
+import { Estudiante } from "./Estudiante.js";
+import { Asignatura } from "./Asignatura.js";
+
 /**
  * @class Lista
  * Clase que gestiona los Estudiantes y Asginaturas, permitiendo agregar, eliminar, listar o buscar los elementos que contienen estas listas.
@@ -220,5 +224,25 @@ export class Lista {
         }else {
             return "No se ha encontrado materias con ese patron";
         }
+    }
+
+    /**
+     * @function
+     * @description Devuelve un array de objetos con los datos de todos los Estudiantes.
+     * 
+     * @returns {Object[]} Array de objetos.
+     */
+    obtenerDatosEstudiantes() {
+        return this.estudiantes.map(alumno => alumno.mostrarEstudiante());
+    }
+
+    /**
+     * @function
+     * @description Devuelve un array de objetos con los datos de todos las Asignaturas.
+     * 
+     * @returns {Object[]} Array de objetos.
+     */
+    obtenerDatosAsignaturas() {
+        return this.asignaturas.map(asignatura => asignatura. mostrarAsignaturas());
     }
 }

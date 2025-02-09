@@ -57,26 +57,18 @@ export class Direccion{
     // Metodos de la clase Direccion
     /**
      * @function
-     * @description Muestra una representación de los datos formateados de la Direccion.
+     * @description Devuelve una matriz con los datos de Direccion.
      * 
-     * @returns {string} Cadena con los detalles completos de la dirección.
-     * @example
-     * const direccion = new Direccion("Avenida Andalucia", 45, 3, 18010, "Granada", "Granada");
-     * console.log(direccion.mostrarDireccion());
-     * // Salida:
-     * //   - Calle      : Avenida Andalucia
-     * //   - Numero     : 45
-     * //   - Piso       : 3
-     * //   - Cod. Postal: 18010
-     * //   - Provincia  : Granada
-     * //   - Localidad  : Granada
+     * @returns {Object} Un objeto con los detalles completos de la dirección.
      */
     mostrarDireccion() {
-        return `   - Calle      : ${this.#calle}        \n` +
-               `   - Numero     : ${this.#numero}       \n` +
-               `   - Piso       : ${this.#piso}         \n` +
-               `   - Cod. Postal: ${this.#cod_postal}   \n` +
-               `   - Provincia  : ${this.#provincia}    \n` +
-               `   - Localidad  : ${this.#localidad}    \n`;
+        return {
+            calle: this.#calle,
+            numero:  this.#numero,
+            piso:  this.#piso,
+            codpostal:  this.#cod_postal,
+            provincia:  this.#provincia,
+            localidad:  this.#localidad,
+        }
     }
 }

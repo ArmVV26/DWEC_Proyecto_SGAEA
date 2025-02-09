@@ -233,53 +233,26 @@ export class Estudiante extends Persona{
 
     /**
      * @function
-     * @description Muestra una representación de los datos formateados del Estudiante.
+     * @description Envio los datos del Estudiante en forma de matriz.
      * 
-     * @returns {string} Cadena con los datos el Estudiante formateados.
-     * 
-     * @example
-     * // Devuelve una cadena con los datos del Estudiante formateados.
-     * // Por ejemplo:
-     * // ────────────────────────────────────
-     * //     ARM001 - Armando Vaquero
-     * // ===================================
-     * // Edad: 23
-     * // Direccion:
-     * //    - Calle      : Avenida Andalucia
-     * //    - Numero     : 45
-     * //    - Piso       : 3
-     * //    - Cod. Postal: 18010
-     * //    - Provincia  : Granada
-     * //    - Localidad  : Granada
-     * // ===================================
-     * //    Asignaturas y Calificaciones
-     * // ===================================
-     * // DAWES: 5 - 10 - 7 - 8 | Promedio: 7.50
-     * // -----------------------------------
-     * // Promedio Total: 7.50
-     * // ────────────────────────────────────
+     * @returns {Object} Un objeto con los datos del Estudiante.
      */
     mostrarEstudiante() {
-        let datos_asignaturas = "";
-
-        this.#asignatura.forEach(materia => {
-            const notas = materia.obtenerCalificaciones(this.#id);
-            const promedio = materia.calcularPromedioEstudiante(this.#id);
-            
-            datos_asignaturas += `${materia.nombre}: ${notas.join(" - ")} | Promedio: ${promedio} \n`;
+        let datos_asignaturas = this.#asignatura.map(materia => {
+            return {
+                nombre: materia.nombre,
+                notas: materia.obtenerCalificaciones(this.#id),
+                promedio: materia.calcularPromedioEstudiante(this.#id),
+            }
         });
 
-        return "──────────────────────────────────── \n" +
-               `     ${this.#id} - ${this.nombre}   \n` +
-               "==================================== \n" +
-               ` Edad: ${this.edad}    \n` +
-               ` Direccion:             \n` +
-               this.direccion +
-               "==================================== \n" +
-               "    Asignaturas y Calificaciones \n" +
-               "==================================== \n" +
-               `${datos_asignaturas}` +
-               "──────────────────────────────────── \n" ;
+        return {
+            id: this.#id,
+            nombre: this.nombre,
+            edad: this.edad,
+            ...this.direccion,
+            asignaturas: datos_asignaturas,
+        };
     }
 
     /**

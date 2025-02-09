@@ -70,7 +70,7 @@ export class Persona {
     /**
      * Obtiene la dirección de la Persona.
      * 
-     * @returns {string} Dirección de la Persona.
+     * @returns {Objetc} Dirección de la Persona.
      */
     get direccion() {
         return this.#direccion.mostrarDireccion();
