@@ -119,6 +119,10 @@ export class Estudiante extends Persona{
         return this.#asignatura;
     }
 
+    set historial(registros) {
+        this.#historial = registros;
+    }
+
     // Metodos de la clase Estudiante.
     /**
      * @function
@@ -212,23 +216,12 @@ export class Estudiante extends Persona{
 
     /**
      * @function
-     * @description Muestra una representación de los datos formateados del historial.
+     * @description Envio los datos del historial de un Estudiante en forma de matriz.
      * 
-     * @returns {string} Cadena con los datos del historial formateados.
-     * 
-     * @example
-     * // Devuelve una cadena con los datos del historial formateados.
-     * // Por ejemplo:
-     * //   06/12/2024 - DAWES - Matrícula
-     * //   06/12/2024 - DAWES - Desmatrícula
+     * @returns {Object} Un objeto con el historial del Estudiante.
      */
     mostrarHistorial() {
-        const registros = `El historial del Estudiante ${this.nombre} es: \n` + 
-            this.#historial.map(registro =>
-                `${registro[0]} - ${registro[1]} - ${registro[2]}`
-            ).join("\n");
-
-        return registros;
+        return this.#historial;
     }
 
     /**
@@ -252,6 +245,7 @@ export class Estudiante extends Persona{
             edad: this.edad,
             ...this.direccion,
             asignaturas: datos_asignaturas,
+            historial: this.#historial,
         };
     }
 

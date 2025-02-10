@@ -43,83 +43,83 @@ import { Lista } from "./Lista.js";
 */
 
 //Creacion de las Direcciones.
-const dir1 = new Direccion("Calle Una", 1, 0, 10000, "Granada", "Pulianas");
-const dir2 = new Direccion("Calle Dos", 2, 1, 20000, "Granada", "Pulianas");
-const dir3 = new Direccion("Calle Tres", 3, 2, 30000, "Granada", "Pulianas");
-const dir4 = new Direccion("Calle Cuatro", 4, 3, 40000, "Granada", "Pulianas");
-const dir5 = new Direccion("Calle Cinco", 5, 4, 50000, "Granada", "Pulianas");
-const dir6 = new Direccion("Calle Seis", 6, 5, 60000, "Granada", "Pulianas");
+// const dir1 = new Direccion("Calle Una", 1, 0, 10000, "Granada", "Pulianas");
+// const dir2 = new Direccion("Calle Dos", 2, 1, 20000, "Granada", "Pulianas");
+// const dir3 = new Direccion("Calle Tres", 3, 2, 30000, "Granada", "Pulianas");
+// const dir4 = new Direccion("Calle Cuatro", 4, 3, 40000, "Granada", "Pulianas");
+// const dir5 = new Direccion("Calle Cinco", 5, 4, 50000, "Granada", "Pulianas");
+// const dir6 = new Direccion("Calle Seis", 6, 5, 60000, "Granada", "Pulianas");
 
-// Creación de las Asignaturas.
-const DAWEB = new Asignatura("DAWEB");
-const DWESE = new Asignatura("DWESE");
-const DWECL = new Asignatura("DWECL");
-const DIWEB = new Asignatura("DIWEB");
-const IAB = new Asignatura("IAB");
+// // Creación de las Asignaturas.
+// const DAWEB = new Asignatura("DAWEB");
+// const DWESE = new Asignatura("DWESE");
+// const DWECL = new Asignatura("DWECL");
+// const DIWEB = new Asignatura("DIWEB");
+// const IAB = new Asignatura("IAB");
 
-// Creación de los Estudiantes.
-const armando = new Estudiante("Armando Vaquero",23,dir1);
-const antonio = new Estudiante("Antonio Fernandez",31,dir2);
-const marcos = new Estudiante("Marcos Pineda",22,dir3);
-const andrea = new Estudiante("Andrea Lopez",21,dir4);
-const claudia = new Estudiante("Claudia Perez",26,dir5);
-const jose = new Estudiante("Jose Campos",28,dir6);
+// // Creación de los Estudiantes.
+// const armando = new Estudiante("Armando Vaquero",23,dir1);
+// const antonio = new Estudiante("Antonio Fernandez",31,dir2);
+// const marcos = new Estudiante("Marcos Pineda",22,dir3);
+// const andrea = new Estudiante("Andrea Lopez",21,dir4);
+// const claudia = new Estudiante("Claudia Perez",26,dir5);
+// const jose = new Estudiante("Jose Campos",28,dir6);
 
-// Creación de la Lista.
+// // Creación de la Lista.
 const lista = new Lista();
 
-// Agregar Estudiantes
-lista.agregarEstudiante(armando);
-lista.agregarEstudiante(antonio);
-lista.agregarEstudiante(marcos);
-lista.agregarEstudiante(andrea);
-lista.agregarEstudiante(claudia);
-lista.agregarEstudiante(jose);
+// // Agregar Estudiantes
+// lista.agregarEstudiante(armando);
+// lista.agregarEstudiante(antonio);
+// lista.agregarEstudiante(marcos);
+// lista.agregarEstudiante(andrea);
+// lista.agregarEstudiante(claudia);
+// lista.agregarEstudiante(jose);
 
-// Agregar Asignaturas
-lista.agregarAsignatura(DAWEB);
-lista.agregarAsignatura(DWESE);
-lista.agregarAsignatura(DWECL);
-lista.agregarAsignatura(DIWEB);
-lista.agregarAsignatura(IAB);
+// // Agregar Asignaturas
+// lista.agregarAsignatura(DAWEB);
+// lista.agregarAsignatura(DWESE);
+// lista.agregarAsignatura(DWECL);
+// lista.agregarAsignatura(DIWEB);
+// lista.agregarAsignatura(IAB);
 
-// Matriculaciones
-armando.matricular(DAWEB, DWESE, IAB);
-antonio.matricular(DAWEB, DWESE, IAB);
-marcos.matricular(DWECL, DIWEB, IAB);
-andrea.matricular(DWECL, DIWEB, IAB);
-claudia.matricular(DWESE, DAWEB, IAB);
-jose.matricular(DWESE, DWECL, IAB);
+// // Matriculaciones
+// armando.matricular(DAWEB, DWESE, IAB);
+// antonio.matricular(DAWEB, DWESE, IAB);
+// marcos.matricular(DWECL, DIWEB, IAB);
+// andrea.matricular(DWECL, DIWEB, IAB);
+// claudia.matricular(DWESE, DAWEB, IAB);
+// jose.matricular(DWESE, DWECL, IAB);
 
-// Desmatriculaciones
-armando.desmatricular(IAB);
-antonio.desmatricular(DWESE);
-marcos.desmatricular(DWECL);
-andrea.desmatricular(DIWEB);
-claudia.desmatricular(DAWEB);
-jose.desmatricular(IAB);
+// // Desmatriculaciones
+// armando.desmatricular(IAB);
+// antonio.desmatricular(DWESE);
+// marcos.desmatricular(DWECL);
+// andrea.desmatricular(DIWEB);
+// claudia.desmatricular(DAWEB);
+// jose.desmatricular(IAB);
 
-// Añadir Calificaciones
-armando.agregarCalificacion(DAWEB, 7.5);
-armando.agregarCalificacion(DAWEB, 9);
-armando.agregarCalificacion(DWESE, 10);
+// // Añadir Calificaciones
+// armando.agregarCalificacion(DAWEB, 7.5);
+// armando.agregarCalificacion(DAWEB, 9);
+// armando.agregarCalificacion(DWESE, 10);
 
-antonio.agregarCalificacion(DAWEB, 8);
-antonio.agregarCalificacion(IAB, 6);
-antonio.agregarCalificacion(IAB, 9);
+// antonio.agregarCalificacion(DAWEB, 8);
+// antonio.agregarCalificacion(IAB, 6);
+// antonio.agregarCalificacion(IAB, 9);
 
-marcos.agregarCalificacion(DIWEB, 10);
-marcos.agregarCalificacion(DIWEB, 9);
+// marcos.agregarCalificacion(DIWEB, 10);
+// marcos.agregarCalificacion(DIWEB, 9);
 
-andrea.agregarCalificacion(DWECL, 6);
-andrea.agregarCalificacion(DWECL, 8);
+// andrea.agregarCalificacion(DWECL, 6);
+// andrea.agregarCalificacion(DWECL, 8);
 
-claudia.agregarCalificacion(DWESE, 10);
-claudia.agregarCalificacion(IAB, 7);
-claudia.agregarCalificacion(IAB, 9);
+// claudia.agregarCalificacion(DWESE, 10);
+// claudia.agregarCalificacion(IAB, 7);
+// claudia.agregarCalificacion(IAB, 9);
 
-jose.agregarCalificacion(DWECL, 4);
-jose.agregarCalificacion(DWECL, 8);
+// jose.agregarCalificacion(DWECL, 4);
+// jose.agregarCalificacion(DWECL, 8);
 
 // Exporto las listas para que app.js las use
 export { lista, Direccion, Estudiante, Asignatura, Lista };

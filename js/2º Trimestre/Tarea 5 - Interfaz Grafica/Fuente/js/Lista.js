@@ -163,27 +163,6 @@ export class Lista {
      * 
      * @param {string} patron - Cadena a buscar en los nombres de los Estudiantes. 
      * @returns {string} Cadena formateada de los Estudiantes o mensaje indicando que no sean encotrado.
-     * 
-     * @example
-     * // Buscar un Estudiante en la lista.
-     * // Por ejemplo:
-     * // ────────────────────────────────────
-     * //     ARM001 - Armando Vaquero
-     * // ===================================
-     * // Edad: 23
-     * // Direccion:
-     * //    - Calle      : Avenida Andalucia
-     * //    - Numero     : 45
-     * //    - Piso       : 3
-     * //    - Cod. Postal: 18010
-     * //    - Provincia  : Granada
-     * //    - Localidad  : Granada
-     * // ===================================
-     * //    Asignaturas y Calificaciones
-     * // ===================================
-     * // DAWES: 5 - 10 - 7 - 8 | Promedio: 7.50
-     * // -----------------------------------
-     * // Promedio Total: 7.50 
      */
     buscarEstudiante(patron) {
         const resultado = this.#estudiantes.filter(alumno => 
@@ -191,9 +170,9 @@ export class Lista {
         );
 
         if (resultado.length > 0) {
-            return resultado.map(alumno => alumno.mostrarEstudiante()).join("\n");
+            return resultado.map(alumno => alumno.mostrarEstudiante());
         }else {
-            return "No se ha encontrado estudiantes con ese patron";
+            return [];
         }
     }
 
@@ -220,9 +199,9 @@ export class Lista {
         );
 
         if (resultado.length > 0) {
-            return resultado.map(materia => materia.mostrarAsignaturas()).join("\n");
+            return resultado.map(materia => materia.mostrarAsignaturas());
         }else {
-            return "No se ha encontrado materias con ese patron";
+            return [];
         }
     }
 
@@ -244,5 +223,23 @@ export class Lista {
      */
     obtenerDatosAsignaturas() {
         return this.asignaturas.map(asignatura => asignatura. mostrarAsignaturas());
+    }
+
+    eliminarEstudiantePorId(id) {
+        const posicion = this.#estudiantes.findIndex(alumno => alumno.id === id);
+        if (posicion !== -1) {
+            
+            const idEstudianteDel = this.#estudiantes.splice(posicion, 1)[0];
+
+            Estudiante.id_Disponibles.push(parseInt(idEstudianteDel.id.substring(3)));
+        }
+    }
+
+    eliminarAsignaturaPorNombre(nombre) {
+        const posicion = this.#asignaturas.findIndex(materia => materia.nombre === nombre);
+        if (posicion !== -1) {
+            
+            this.#asignaturas.splice(posicion, 1);
+        }
     }
 }

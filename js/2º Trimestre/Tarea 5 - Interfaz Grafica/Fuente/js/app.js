@@ -7,7 +7,17 @@ const mostrar = document.getElementById("mostrar");
 const matricular = document.getElementById("matricular");
 const desmatricular = document.getElementById("desmatricular");
 const calificacion = document.getElementById("calificacion");
+const registro = document.getElementById("registro");
 const buscar = document.getElementById("buscar");
+
+// Guardar datos del localStorage
+document.addEventListener("DOMContentLoaded", () => {
+    if (!localStorage.getItem("estudiantes") || !localStorage.getItem("asignaturas")) {
+        guardarDatosIniciales();
+    } else {
+        cargarDatos();
+    }
+});
 
 // Opcion 1: Agregar Estudiante / Asignatura.
 agregar.addEventListener("click", () => {
@@ -27,7 +37,27 @@ mostrar.addEventListener("click", () => {
 // Opcion 4: Matricular Estudiante.
 matricular.addEventListener("click", () => {
     matricularEstudiante();
-})
+});
+
+// Opcion 5: Desmatricular Estudiante.
+desmatricular.addEventListener("click", () => {
+    desmatricularEstudiante();
+});
+
+// Opcion 6: Añadir Calificación.
+calificacion.addEventListener("click", () => {
+    calificarEstudiante();
+});
+
+// Opcion 7: Mostrar Historial de un Estudiante.
+registro.addEventListener("click", () => {
+    mostrarRegistro();
+});
+
+// Opcion 8: Buscar Estudiante / Asignatura.
+buscar.addEventListener("click", () => {
+    menuSecundario("buscar");
+});
 
 function menuSecundario(accion) {
     main.innerHTML = `
@@ -50,6 +80,10 @@ function menuSecundario(accion) {
             case "mostrar":
                 return mostrarEstudiantes();
                 break;
+
+             case "buscar":
+                return buscarEstudiantes();
+                break;
         }
     });
     
@@ -65,6 +99,10 @@ function menuSecundario(accion) {
 
             case "mostrar":
                 return mostrarAsignaturas();
+                break;
+
+            case "buscar":
+                return buscarAsignaturas();
                 break;
         }
     });
@@ -224,6 +262,8 @@ function agregarEstudiante() {
             main.innerHTML = `
                 <h2>Estudiante agregado correctamente</h2>
             `;
+
+            localStorage.setItem("estudiantes", JSON.stringify(lista.obtenerDatosEstudiantes()));
         } else {
             formulario.reportValidity();
         }
@@ -249,7 +289,7 @@ function agregarAsignatura() {
     const nombre = document.getElementById("nombre");
     nombre.addEventListener("input", function() {
         if (this.required && this.value.trim() === "") {
-            this.setCustomValidity("El nombre es obligatorio");
+            this.setCustomValidity("El nombre es obligatorio.");
         } else {
             this.setCustomValidity("");
         }
@@ -364,7 +404,7 @@ function eliminarAsignatura() {
 
         if (evento.target && evento.target.classList.contains("eliminar")) {
             const nombre = evento.target.getAttribute("data-nombre");
-            const asignatura = lista.asignaturas.find(est => est.nombre === nombre);
+            const asignatura = lista.asignaturas.find(asig => asig.nombre === nombre);
 
             lista.eliminarAsignatura(asignatura);
 
@@ -496,6 +536,7 @@ function mostrarAsignaturas() {
  */
 function matricularEstudiante() {
     let tabla = `
+        <h2>Matricular</h2>
         <table>
             <thead>
                 <tr>
@@ -529,15 +570,633 @@ function matricularEstudiante() {
     const tbody = document.getElementById("tabla-body");
     tbody.addEventListener("click", (evento) => {
 
-        if (evento.target && evento.target.classList.contains("eliminar")) {
+        if (evento.target && evento.target.classList.contains("seleccionar")) {
+            const id_Estudiante = evento.target.getAttribute("data-id");
+
+            let asigEstudiante = [];
+
+            lista.obtenerDatosEstudiantes().forEach(estudiante => {
+                if (estudiante.id === id_Estudiante) {
+                    estudiante.asignaturas.forEach(asignatura => {
+                        asigEstudiante.push(asignatura.nombre);
+                    });
+                }
+            });
+
+            let tabla = `
+                <h2>Matricular</h2>     
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Opcion</th>
+                            <th>Elegir</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-body">
+            `;
+            
+            lista.obtenerDatosAsignaturas().forEach(asignatura => {
+                tabla += `
+                    <tr>
+                        <td>${asignatura.nombre}</td>
+                `;
+
+                if (asigEstudiante.includes(asignatura.nombre)) {
+                    tabla += `
+                        <td> Matriculado </td>
+                    `;
+                } else {
+                    tabla += `
+                        <td> No Matriculado</td>
+                    `;
+                }
+                
+                tabla += `
+                        <td>
+                            <button class="matricular" data-nombre="${asignatura.nombre}">Matricular</button>
+                        </td>
+                    </tr>
+                `;
+            });
+            
+            tabla += `
+                    </tbody>
+                </table>
+            `;
+
+            main.innerHTML = tabla;
+
+            const tbody = document.getElementById("tabla-body");
+            tbody.addEventListener("click", (evento) => {
+        
+                if (evento.target && evento.target.classList.contains("matricular")) {
+
+                    const estudiante = lista.estudiantes.find(est => est.id === id_Estudiante);
+
+                    const nom_Asignatura = evento.target.getAttribute("data-nombre");
+                    const materia = lista.asignaturas.find(asig => asig.nombre === nom_Asignatura);
+                    
+                    estudiante.matricular(materia);
+        
+                    main.innerHTML = `
+                        <h2>Estudiante Matriculado</h2>
+                    `;
+                }
+            });
+        }
+    }); 
+}
+
+/**
+ * Opcion 5: Desmatricular Estudiante.
+ * Permite desmatricular a un Estudiante de una Asignatura.
+ */
+function desmatricularEstudiante() {
+    let tabla = `
+        <h2>Desmatricular</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Seleccionar</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-body">
+    `;
+    
+    lista.obtenerDatosEstudiantes().forEach(estudiante => {
+        tabla += `
+            <tr>
+                <td>${estudiante.id}</td>
+                <td>${estudiante.nombre}</td>
+                <td>
+                    <button class="seleccionar" data-id="${estudiante.id}">Seleccionar</button>
+                </td>
+            </tr>
+        `;
+    });
+    
+    tabla += `
+            </tbody>
+        </table>
+    `;
+
+    main.innerHTML = tabla;
+
+    const tbody = document.getElementById("tabla-body");
+    tbody.addEventListener("click", (evento) => {
+
+        if (evento.target && evento.target.classList.contains("seleccionar")) {
+            const id_Estudiante = evento.target.getAttribute("data-id");
+
+            let asigEstudiante = [];
+
+            lista.obtenerDatosEstudiantes().forEach(estudiante => {
+                if (estudiante.id === id_Estudiante) {
+                    estudiante.asignaturas.forEach(asignatura => {
+                        asigEstudiante.push(asignatura.nombre);
+                    });
+                }
+            });
+
+            let tabla = `
+                <h2>Desmatricular</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Elegir</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-body">
+            `;
+            
+            lista.obtenerDatosAsignaturas().forEach(asignatura => {
+                if (asigEstudiante.includes(asignatura.nombre)) {
+                    tabla += `
+                            <td>${asignatura.nombre}</td>
+                            <td>
+                                <button class="desmatricular" data-nombre="${asignatura.nombre}">Desmatricular</button>
+                            </td>
+                        </tr>   
+                    `;
+                }
+            });
+            
+            tabla += `
+                    </tbody>
+                </table>
+            `;
+
+            main.innerHTML = tabla;
+
+            const tbody = document.getElementById("tabla-body");
+            tbody.addEventListener("click", (evento) => {
+        
+                if (evento.target && evento.target.classList.contains("desmatricular")) {
+
+                    const estudiante = lista.estudiantes.find(est => est.id === id_Estudiante);
+
+                    const nom_Asignatura = evento.target.getAttribute("data-nombre");
+                    const materia = lista.asignaturas.find(asig => asig.nombre === nom_Asignatura);
+                    
+                    estudiante.desmatricular(materia);
+        
+                    main.innerHTML = `
+                        <h2>Estudiante Desmatriculado</h2>
+                    `;
+                }
+            });
+        }
+    }); 
+}
+
+/**
+ * Opcion 6: Añadir Calificación.
+ * Permite añadir una calificación a un Estudiante en una Asignatura.
+ */
+function calificarEstudiante() {
+    let tabla = `
+    <h2>Calificar</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Calificar</th>
+            </tr>
+        </thead>
+        <tbody id="tabla-body">
+    `;
+
+    lista.obtenerDatosEstudiantes().forEach(estudiante => {
+        tabla += `
+            <tr>
+                <td>${estudiante.id}</td>
+                <td>${estudiante.nombre}</td>
+                <td>
+                    <button class="seleccionar" data-id="${estudiante.id}">Seleccionar</button>
+                </td>
+            </tr>
+        `;
+    });
+
+    tabla += `
+            </tbody>
+        </table>
+    `;
+
+    main.innerHTML = tabla;
+
+    const tbody = document.getElementById("tabla-body");
+    tbody.addEventListener("click", (evento) => {
+
+        if (evento.target && evento.target.classList.contains("seleccionar")) {
+            const id_Estudiante = evento.target.getAttribute("data-id");
+
+            let tabla = `
+                <h2>Calificar</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Notas</th>
+                            <th>Elegir</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-body">
+            `;
+            
+
+            lista.obtenerDatosEstudiantes().forEach(estudiante => {
+                if (estudiante.id === id_Estudiante) {
+                    if (estudiante.asignaturas.length > 0) {
+                        
+                        estudiante.asignaturas.forEach(asignatura => {
+                            tabla += `
+                                <tr>
+                                    <td>${asignatura.nombre}</td>
+                                    <td>${asignatura.notas.join(" - ")}</td>
+                                    <td>
+                                        <button class="calificar" data-nombre="${asignatura.nombre}">Añadir Nota</button>
+                                    </td>
+                                </tr>
+                            `;
+                        });
+                    } else {
+                        tabla += `
+                            <tr>
+                                <td colspan="3">No esta matriculado</td>
+                            </tr>
+                        `;
+                    }
+                }
+            });
+            
+            tabla += `
+                    </tbody>
+                </table>
+            `;
+
+            main.innerHTML = tabla;
+
+            const tbody = document.getElementById("tabla-body");
+            tbody.addEventListener("click", (evento) => {
+        
+                if (evento.target && evento.target.classList.contains("calificar")) {
+
+                    const estudiante = lista.estudiantes.find(est => est.id === id_Estudiante);
+
+                    const nom_Asignatura = evento.target.getAttribute("data-nombre");
+                    const materia = lista.asignaturas.find(asig => asig.nombre === nom_Asignatura);
+                    
+                     main.innerHTML = `  
+                        <form method="post">
+                            <h1>Formulario Calificación</h1>
+                            <h2>${materia.nombre} - ${estudiante.nombre}</h2>
+
+                            <label for="nota">Nota</label>
+                            <input type="number" name="nota" id="nota" 
+                                min="0" max="10" placeholder="Escribe una nota" required>
+
+                            <button type="submit">Aceptar</button>
+                        </form>
+                    `;
+                    
+                    const formulario = document.getElementsByTagName("form")[0];
+                    
+                    const nota = document.getElementById("nota");
+                    nota.addEventListener("input", function() {
+                        if (this.required && this.value.trim() === "") {
+                            this.setCustomValidity("Introduce una nota válida.");
+                        } else {
+                            this.setCustomValidity("");
+                        }
+                        this.reportValidity();
+                    });
+
+                    formulario.addEventListener("submit", function(evento) {
+                        evento.preventDefault();
+
+                        // Si el formulario es valido, se recogen los datos
+                        if (formulario.checkValidity()) {
+                            const calificacion = parseFloat(nota.value.trim());
+
+                            materia.addCalificacion(id_Estudiante, calificacion);
+
+                            main.innerHTML = `
+                                <h2>Calificación agregada correctamente</h2>
+                            `;
+                        } else {
+                            formulario.reportValidity();
+                        }
+                    });
+
+                }
+            });
+        }
+    });     
+}
+
+/**
+ * Opcion 7: Mostrar Historial de un Estudiante.
+ * Permite mostrar el historial de un Estudiante.
+ */
+function mostrarRegistro() {
+    let tabla = `
+        <h2>Registro</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Mostrar</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-body">
+    `;
+
+    lista.obtenerDatosEstudiantes().forEach(estudiante => {
+        tabla += `
+            <tr>
+                <td>${estudiante.id}</td>
+                <td>${estudiante.nombre}</td>
+                <td>
+                    <button class="seleccionar" data-id="${estudiante.id}">Seleccionar</button>
+                </td>
+            </tr>
+        `;
+    });
+
+    tabla += `
+            </tbody>
+        </table>
+    `;
+
+    main.innerHTML = tabla;
+
+    const tbody = document.getElementById("tabla-body");
+    tbody.addEventListener("click", (evento) => {
+
+        if (evento.target && evento.target.classList.contains("seleccionar")) {
             const id = evento.target.getAttribute("data-id");
             const estudiante = lista.estudiantes.find(est => est.id === id);
 
-            lista.eliminarEstudiante(estudiante);
-
-            main.innerHTML = `
-                <h2>Estudiante eliminado</h2>
+            tabla = `
+                <h2>Registro - ${estudiante.nombre}</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Fecha</th>
+                            <th>Asignatura</th>
+                            <th>Opción</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabla-body">
             `;
+            
+            if (estudiante.mostrarHistorial().length > 0) {
+                
+                estudiante.mostrarHistorial().forEach(regHistorial => {
+                    tabla += `
+                        <tr>
+                            <td>${regHistorial[0]}</td>    
+                            <td>${regHistorial[1]}</td>    
+                            <td>${regHistorial[2]}</td>    
+                        </tr>
+                    `;
+                });
+            } else {
+                tabla += `
+                    <tr>
+                        <td colspan="3">No hay ningun registro</td>
+                    </tr>
+                `;
+            }
+
+            tabla += `
+                    </tbody>
+                </table>
+            `;  
+
+            main.innerHTML = tabla;
         }
     }); 
+
+}
+
+/**
+ * Opcion 8: Buscar Estudiante / Asignatura.
+ * Permite buscar a un Estudiante o una Asignatura por un patrón de su nombre.
+ */
+function buscarEstudiantes() {
+    main.innerHTML = `  
+        <form method="post">
+            <h1>Buscar Estudiante</h1>
+
+            <label for="patron">Nombre</label>
+            <input type="text" name="patron" id="patron" 
+                pattern="^[A-Za-zÀ-ÿ]+$" placeholder="Escribe un patrón" required>
+
+            <button type="submit">Aceptar</button>
+        </form>
+    `;
+
+    const formulario = document.getElementsByTagName("form")[0];
+
+    const patron = document.getElementById("patron");
+    patron.addEventListener("input", function() {
+        if (this.required && this.value.trim() === "") {
+            this.setCustomValidity("El patrón es obligatorio.");
+        } else {
+            this.setCustomValidity("");
+        }
+        this.reportValidity();
+    });
+
+    formulario.addEventListener("submit", function(evento) {
+        evento.preventDefault();
+
+        // Si el formulario es valido, se recogen los datos
+        if (formulario.checkValidity()) {
+            const pattern = patron.value.trim();
+
+            if (lista.buscarEstudiante(pattern).length > 0) {
+                let tabla = `
+                    <h2>Busqueda con: "${pattern}"</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tabla-body">
+                `;
+
+                lista.buscarEstudiante(pattern).forEach(estudiante => {
+                    tabla += `
+                        <tr>
+                            <td>${estudiante.id}</td>
+                            <td>${estudiante.nombre}</td>
+                        </tr>
+                    `;
+                });
+
+                tabla += `
+                        </tbody>
+                    </table>
+                `;
+
+                main.innerHTML = tabla;
+            } else {
+                main.innerHTML = `
+                    <h2>No hay ningún Estudiante con ese patrón</h2>
+                `;   
+            }
+        } else {
+            formulario.reportValidity();
+        }
+    });
+}
+
+function buscarAsignaturas() {
+    main.innerHTML = `  
+        <form method="post">
+            <h1>Buscar Asignatura</h1>
+
+            <label for="patron">Nombre</label>
+            <input type="text" name="patron" id="patron" 
+                pattern="^[A-Za-zÀ-ÿ]+$" placeholder="Escribe un patrón" required>
+
+            <button type="submit">Aceptar</button>
+        </form>
+    `;
+
+    const formulario = document.getElementsByTagName("form")[0];
+
+    const patron = document.getElementById("patron");
+    patron.addEventListener("input", function() {
+        if (this.required && this.value.trim() === "") {
+            this.setCustomValidity("El patrón es obligatorio.");
+        } else {
+            this.setCustomValidity("");
+        }
+        this.reportValidity();
+    });
+
+    formulario.addEventListener("submit", function(evento) {
+        evento.preventDefault();
+
+        // Si el formulario es valido, se recogen los datos
+        if (formulario.checkValidity()) {
+            const pattern = patron.value.trim();
+
+            if (lista.buscarAsignatura(pattern).length > 0) {
+                let tabla = `
+                    <h2>Busqueda con: "${pattern}"</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>ID - Notas</th>
+                                <th>Promedio</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+                
+                lista.buscarAsignatura(pattern).forEach(asignatura => {
+                    tabla += `
+                        <tr>
+                            <td>${asignatura.nombre}</td>
+                    `;
+
+                    if (asignatura.notas.length > 0) {
+                        tabla += `<td>`;
+
+                        asignatura.notas.forEach(nota => {
+                            tabla += `
+                                <p> ${nota[0]} [ ${nota[1].join(" - ")} ] </p>
+                            `;
+                        });
+
+                        tabla += `
+                                </td>
+                                <td>${asignatura.promedio}</td>
+                            </tr>
+                        `;
+                    } else {
+                        tabla += `
+                                <td>Sin calificaciones</td>
+                                <td> - </td>
+                            </tr>
+                        `;
+                    }
+                });
+
+                tabla += `
+                        </tbody>
+                    </table>
+                `;
+
+                main.innerHTML = tabla;
+            } else {
+                main.innerHTML = `
+                    <h2>No hay ninguna Asignatura con ese patrón</h2>
+                `;   
+            }
+        } else {
+            formulario.reportValidity();
+        }
+    });
+}
+
+// Guardar BOM
+function guardarDatosIniciales() {
+    localStorage.setItem("estudiantes", JSON.stringify(lista.obtenerDatosEstudiantes()));
+    localStorage.setItem("asignaturas", JSON.stringify(lista.obtenerDatosAsignaturas()));
+}
+
+function cargarDatos() {
+    lista.obtenerDatosEstudiantes().forEach(alumno => lista.eliminarEstudiantePorId(alumno.id));
+    lista.obtenerDatosAsignaturas().forEach(materia => lista.eliminarAsignaturaPorNombre(materia.nombre));
+
+    const estudiantesGuardados = JSON.parse(localStorage.getItem("estudiantes")) || [];
+    const asignaturasGuardadas = JSON.parse(localStorage.getItem("asignaturas")) || [];
+
+    asignaturasGuardadas.forEach(materia => {
+        const nuevaAsignatura = new Asignatura(materia.nombre);
+        lista.agregarAsignatura(nuevaAsignatura);
+    });
+
+    estudiantesGuardados.forEach(alumno => {
+        const nuevaDireccion = new Direccion(alumno.calle, alumno.numero, alumno.piso, alumno.codpostal, alumno.provincia, alumno.localidad);
+        const nuevoEstudiante = new Estudiante(alumno.nombre, alumno.edad, nuevaDireccion);
+
+        nuevoEstudiante.historial = alumno.historial;
+        
+        alumno.asignaturas.forEach(materia => {
+        
+            lista.obtenerDatosAsignaturas().forEach(materia => {
+                console.log(materia);
+            });
+        });
+        //     const materiaReal = lista.obtenerDatosAsignaturas().find(asignatura => asignatura.nombre === materia.nombre);
+            
+        //     if (materiaReal) {
+        //         nuevoEstudiante.matricular(materiaReal);
+            
+        //         materia.notas.forEach(nota => {
+        //             nuevoEstudiante.agregarCalificacion(materiaReal, nota);
+        //         });
+        //     }
+        // });
+        
+        // lista.agregarEstudiante(nuevoEstudiante);
+    });
+
+    console.log(lista);
 }
