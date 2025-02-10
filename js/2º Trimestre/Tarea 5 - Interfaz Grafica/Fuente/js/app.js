@@ -513,7 +513,7 @@ function matricularEstudiante() {
                 <td>${estudiante.id}</td>
                 <td>${estudiante.nombre}</td>
                 <td>
-                    <button class="eliminar" data-id="${estudiante.id}">Seleccionar</button>
+                    <button class="seleccionar" data-id="${estudiante.id}">Seleccionar</button>
                 </td>
             </tr>
         `;
