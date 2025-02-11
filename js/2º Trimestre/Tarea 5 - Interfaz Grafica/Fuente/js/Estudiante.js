@@ -119,6 +119,10 @@ export class Estudiante extends Persona{
         return this.#asignatura;
     }
 
+    set asignatura(materia) {
+        this.#asignatura.push(materia);
+    }
+
     set historial(registros) {
         this.#historial = registros;
     }

@@ -222,7 +222,7 @@ export class Lista {
      * @returns {Object[]} Array de objetos.
      */
     obtenerDatosAsignaturas() {
-        return this.asignaturas.map(asignatura => asignatura. mostrarAsignaturas());
+        return this.asignaturas.map(asignatura => asignatura.mostrarAsignaturas());
     }
 
     eliminarEstudiantePorId(id) {
