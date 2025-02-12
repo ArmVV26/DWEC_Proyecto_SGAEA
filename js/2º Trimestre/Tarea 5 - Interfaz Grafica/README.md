@@ -28,6 +28,10 @@ La tarea se organiza en los siguientes directorios y ficheros:
   - ***menu-desplegable.js***: Script que no es parte del proyecto. Sirve para convertir el menú principal en un menú desplegable, añadiendo una clase al hacer clic. Este cambio se produce a cierta resolución.
 - `index.html`: Archivo principal que tiene asociado el script ***main.js*** con el que se ejecuta el programa principal.
 
+> [!NOTE]
+> **Razón de dividir `main.js` y `app.js`**
+> He decidido que `main.js` contenga la inicialización de datos y eventos, mientras que `app.js` maneja la lógica interacción con el usuario, para mejorar la organización y el mantenimiento del código.
+
 ### 2. Desarrollo Técnico
 Para desarrollar la interfaz gráfica, he optado por usar HTML dinámico que se genera desde *JavaScript*. Para ello he usado:
 - **document.getElementByID("id")**: Sirve para obtener una referencia a un elemento  del DOM a través de su atributo ID.
