@@ -2,7 +2,7 @@
   "type": "module",
   "name": "polyfill",
   "version": "1.0.0",
-  "description": "ejemplo de polyfill",
+  "description": "Tarea 4.5 - Polyfill y Transpile",
   "main": "src/main.js",
   "scripts": {
     "doc": "npx jsdoc -c jsdoc.json",
@@ -15,7 +15,7 @@
     "limpia:com": "rimraf compilado",
     "generar:bundle": "run-s limpia:com des prod"
   },
-  "author": "armando",
+  "author": "Armando",
   "license": "ISC",
   "devDependencies": {
     "@babel/core": "^7.26.0",

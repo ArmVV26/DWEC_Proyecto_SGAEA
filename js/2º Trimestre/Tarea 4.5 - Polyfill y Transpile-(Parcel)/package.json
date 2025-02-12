@@ -2,19 +2,15 @@
   "type": "module",
   "name": "polyfill",
   "version": "1.0.0",
-  "description": "ejemplo de polyfill",
+  "description": "Tarea 4.5 - Polyfill y Transpile (Parcel)",
   "main": "src/main.js",
   "browserslist": [
-    "defaults",
-    "firefox 45",
-    "chrome 49",
-    "safari 10",
-    "ie 11"
+    "> 0.25%",
+    "firefox > 10",
+    "chrome > 10",
+    "safari > 10"
   ],
   "scripts": {
-    "doc": "npx jsdoc -c jsdoc.json",
-    "limpia:doc": "rimraf docs",
-    "generar:jsdoc": "npm-run-all limpia-doc doc",
     "dev:parcel": "parcel src/index.html --dist-dir dev",
     "build:parcel": "parcel src/index.html --dist-dir build",
     "limpia:dev": "rimraf dev .parcel-cache",
@@ -22,18 +18,14 @@
     "dev:todo": "run-s limpia:dev dev:parcel",
     "build:todo": "run-s limpia:build build:parcel"
   },
-  "author": "armando",
+  "author": "Armando",
   "license": "ISC",
   "devDependencies": {
-    "jsdoc": "^4.0.4",
-    "jsdoc-to-markdown": "^9.1.1",
-    "minami": "^1.2.3",
+    "@babel/core": "^7.26.8",
+    "@babel/preset-env": "^7.26.8",
+    "@parcel/transformer-babel": "^2.13.3",
     "npm-run-all": "^4.1.5",
     "parcel": "^2.13.3",
-    "rimraf": "^6.0.1",
-    "taffydb": "^2.7.3"
-  },
-  "dependencies": {
-    "live-server": "^1.2.2"
+    "rimraf": "^6.0.1"
   }
 }
