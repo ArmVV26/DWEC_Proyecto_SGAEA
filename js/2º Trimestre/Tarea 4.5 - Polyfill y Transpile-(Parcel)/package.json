@@ -6,9 +6,9 @@
   "main": "src/main.js",
   "browserslist": [
     "> 0.25%",
-    "firefox > 10",
-    "chrome > 10",
-    "safari > 10"
+    "firefox >= 10",
+    "chrome >= 10",
+    "safari >= 10"
   ],
   "scripts": {
     "dev:parcel": "parcel src/index.html --dist-dir dev",
