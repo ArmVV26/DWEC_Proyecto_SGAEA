@@ -4,13 +4,23 @@
   "version": "1.0.0",
   "description": "ejemplo de polyfill",
   "main": "src/main.js",
+  "browserslist": [
+    "defaults",
+    "firefox 45",
+    "chrome 49",
+    "safari 10",
+    "ie 11"
+  ],
   "scripts": {
     "doc": "npx jsdoc -c jsdoc.json",
     "limpia:doc": "rimraf docs",
     "generar:jsdoc": "npm-run-all limpia-doc doc",
-    "dev:parcel": "parcel src/index.html",
-    "build:parcel": "parcel src/index.html",
-    "limpia": "rimraf dist .parcel-cache"
+    "dev:parcel": "parcel src/index.html --dist-dir dev",
+    "build:parcel": "parcel src/index.html --dist-dir build",
+    "limpia:dev": "rimraf dev .parcel-cache",
+    "limpia:build": "rimraf build .parcel-cache",
+    "dev:todo": "run-s limpia:dev dev:parcel",
+    "build:todo": "run-s limpia:build build:parcel"
   },
   "author": "armando",
   "license": "ISC",
@@ -25,26 +35,5 @@
   },
   "dependencies": {
     "live-server": "^1.2.2"
-  },
-  "browserslist": [
-    "> 0.25%",
-    "firefox >= 10",
-    "chrome >= 10",
-    "safari >= 10",
-    "not dead"
-  ],
-  "targets": {
-    "default": {
-      "context": "browser",
-      "engines": {
-        "browsers": [
-          "> 0.25%",
-          "firefox >= 10",
-          "chrome >= 10",
-          "safari >= 10",
-          "not dead"
-        ]
-      }
-    }
   }
 }

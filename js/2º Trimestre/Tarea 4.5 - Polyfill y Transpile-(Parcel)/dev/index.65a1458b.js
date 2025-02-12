@@ -142,14 +142,14 @@
       this[globalName] = mainExports;
     }
   }
-})({"1Fqy1":[function(require,module,exports,__globalThis) {
+})({"7bVPS":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
 var HMR_USE_SSE = false;
-module.bundle.HMR_BUNDLE_ID = "bed887d14d6bcbeb";
+module.bundle.HMR_BUNDLE_ID = "0e97bf7165a1458b";
 "use strict";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, HMR_USE_SSE, chrome, browser, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
@@ -1917,6 +1917,6 @@ function mostrarAsignaturasEstudiante(posicion_Est) {
     } else return lista.asignaturas.length + 2;
 }
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["1Fqy1","gLLPy"], "gLLPy", "parcelRequire94c2")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["7bVPS","gLLPy"], "gLLPy", "parcelRequire94c2")
 
-//# sourceMappingURL=index.4d6bcbeb.js.map
+//# sourceMappingURL=index.65a1458b.js.map
