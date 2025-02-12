@@ -29,7 +29,7 @@ La tarea se organiza en los siguientes directorios y ficheros:
 - `index.html`: Archivo principal que tiene asociado el script ***main.js*** con el que se ejecuta el programa principal.
 
 > [!NOTE]
-> **Razón de dividir `main.js` y `app.js`**
+> **Razón de dividir `main.js` y `app.js`** <br>
 > He decidido que `main.js` contenga la inicialización de datos y eventos, mientras que `app.js` maneja la lógica interacción con el usuario, para mejorar la organización y el mantenimiento del código.
 
 ### 2. Desarrollo Técnico
