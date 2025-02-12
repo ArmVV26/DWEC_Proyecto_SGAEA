@@ -153,7 +153,7 @@ const buscar = document.getElementById("buscar");
 
 /*
     EVENTOS
-    
+    ───────
     * En esta sección se definen los eventos que se ejecutan al interactuar con la interfaz (botones del menú).
 */
 // Opcion 1: Agregar Estudiante / Asignatura.

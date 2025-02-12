@@ -142,7 +142,7 @@ td button {
 }
 
 td button:hover {
-    background-color: var(--color-blanco);
+    background-color: var(--color-salmon);
     color: var(--color-negro);
 }
 

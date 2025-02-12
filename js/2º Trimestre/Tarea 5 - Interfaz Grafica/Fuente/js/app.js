@@ -667,20 +667,19 @@ export function matricularEstudiante() {
                         // Si el Estudiante esta matriculado en la Asignatura, se muestra "Matriculado", sino "No Matriculado".
                         if (asigEstudiante.includes(asignatura.nombre)) {
                             tabla += `
-                                <td> Matriculado </td>
+                                    <td> Matriculado </td>
+                                    <td> - </td>
+                                </tr>
                             `;
                         } else {
                             tabla += `
-                                <td> No Matriculado</td>
+                                    <td> No Matriculado</td>
+                                    <td>
+                                        <button class="matricular" data-nombre="${asignatura.nombre}">Matricular</button>
+                                    </td>
+                                </tr>
                             `;
                         }
-                        
-                        tabla += `
-                                <td>
-                                    <button class="matricular" data-nombre="${asignatura.nombre}">Matricular</button>
-                                </td>
-                            </tr>
-                        `;
                     });
                     
                     tabla += `
