@@ -80,19 +80,19 @@ En este apartado voy a explicar qué cambios he tenido que realizar en algunos s
     - Guardar o cargar los datos del **localStorage**.
 
 ### 4. Capturas
-Método Mostrar Estudiante:
+**Método Mostrar Estudiante:** <br>
 ![Método Mostrar Estudiante](../img-documentar/Tarea-5/Metodo-Mostrar-Estudiante.PNG)
 
-Método Agregar Estudiante:
+**Método Agregar Estudiante:** <br>
 ![Método Agregar Estudiante](../img-documentar/Tarea-5/Metodo-Agregar-Estudiante.PNG)
 
-Método Mostrar Registro:
+**Método Mostrar Registro:** <br>
 ![Método Mostrar Registro](../img-documentar/Tarea-5/Metodo-Mostrar-Registro.PNG)
 
-Método Buscar Asignatura:
+**Método Buscar Asignatura:** <br>
 ![Método Buscar Asignatura](../img-documentar/Tarea-5/Metodo-Buscar-Asignatura.PNG)
 
-LocalStorage:
+**LocalStorage:** <br>
 ![Método Buscar Asignatura](../img-documentar/Tarea-5/LocalStorage.PNG)
 
 ---
