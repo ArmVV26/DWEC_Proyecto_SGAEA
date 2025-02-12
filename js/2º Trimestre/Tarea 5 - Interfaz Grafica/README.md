@@ -18,7 +18,7 @@ En este apartado se describe la estructura utilizada, los elementos usados para 
 ### 1. Estructura
 La tarea se organiza en los siguientes directorios y ficheros:
 - `css/`: Directorio donde se encontrarán  los estilos aplicados a la web.
-- `src`: Directorio donde se encontrarán todos los archivos *JS*, que hacen que el programa funcione correctamente. Los archivos que contiene son:
+- `src/`: Directorio donde se encontrarán todos los archivos *JS*, que hacen que el programa funcione correctamente. Los archivos que contiene son:
   - ***app.js***: Contiene las funciones que modifican el DOM e interactúan con el usuario.
   - ***Asignatura.js***: Define la clase **Asignatura**.
   - ***Direccion.js***: Define la clase **Direccion**.
@@ -26,7 +26,7 @@ La tarea se organiza en los siguientes directorios y ficheros:
   - ***main.js***: Código principal, donde se inicializan  los datos y se gestionan los eventos.
   - ***Persona.js***: Define la clase **Persona**.
   - ***menu-desplegable.js***: Script que no es parte del proyecto. Sirve para convertir el menú principal en un menú desplegable, añadiendo una clase al hacer clic. Este cambio se produce a cierta resolución.
-- `index.html`: Archivo principal que tiene asociado el script ***main.js*** con el que se ejecuta el programa principal.
+- ***index.html***: Archivo principal que tiene asociado el script ***main.js*** con el que se ejecuta el programa principal.
 
 ### 2. Desarrollo Técnico
 Para desarrollar la interfaz gráfica, he optado por usar HTML dinámico que se genera desde *JavaScript*. Para ello he usado:
