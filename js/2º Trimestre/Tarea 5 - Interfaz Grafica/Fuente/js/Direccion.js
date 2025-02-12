@@ -57,9 +57,20 @@ export class Direccion{
     // Metodos de la clase Direccion
     /**
      * @function
-     * @description Devuelve una matriz con los datos de Direccion.
+     * @description Retorna los datos de la Direccion en un objeto formateado.
      * 
-     * @returns {Object} Un objeto con los detalles completos de la dirección.
+     * @returns {Object} Un objeto con los datos de la Dirección.
+     * 
+     * @example
+     * // Devuelve un objeto con los datos de la Asignatura formateados:
+     * // {
+     * //   calle: "Una calle",
+     * //   numero: 30,
+     * //   piso: 1,
+     * //   codpostal: 18010,
+     * //   provincia: "Granada",
+     * //   localidad: "Granada"
+     * // }
      */
     mostrarDireccion() {
         return {

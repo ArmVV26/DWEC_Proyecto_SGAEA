@@ -72,11 +72,26 @@ header {
     margin-top: 1rem;
 }
 
-.menu-principal ul {
+.enlaces {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    gap: 1rem; 
+    gap: 1rem;
+}
+
+/* Menu Desplegable */
+.menu-desplegable {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--color-blanco);
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+.menu-desplegable:hover {
+    transform: scale(1,0.75);
+    color: var(--color-azul);
 }
 
 /* Estilo de los botones */
@@ -211,9 +226,31 @@ footer {
     button {
         font-size: 0.75rem;
     }
-    .menu-principal ul {
+    header {
+        flex-direction: row;
+        gap: 1rem;
+    }
+    .menu-desplegable {
+        display: block;
+    }
+    .enlaces {
+        text-align: center;
         flex-direction: column;
         align-items: center;
+        position: absolute;
+        right: 0;
+        transform: translateY(-1rem);
+        visibility: hidden;
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+    .enlaces.activo {
+        visibility: visible;
+        top: 3rem;
+        background-color: var(--color-negro);
+        transform: translateY(0);
+        transition: all 0.5s;
+        z-index: 1;
     }
     form {
         width: 14rem;
@@ -244,8 +281,24 @@ footer {
     button {
         font-size: 1rem;
     }
-    .menu-principal ul {
+    header {
+        flex-direction: column;
+    }
+    .menu-desplegable {
+        display: none;
+    }
+    .enlaces {
         flex-direction: row;
+        align-items: center;
+        position: relative;
+        visibility: visible;
+        gap: 1rem;
+        padding: 0;
+    }
+    .enlaces.activo {
+        top: 0rem;
+        background-color: none;
+        z-index: 1;
     }
     form {
         width: 30rem;

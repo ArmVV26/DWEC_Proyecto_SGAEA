@@ -81,14 +81,14 @@ export class Lista {
      * 
      * @example
      * // Añadir un Estudiante a la lista.
-     * // Por ejemplo: "El estudiante ha sido añadido"
+     * // Por ejemplo: "Estudiante añadido correctamente"
      */
     agregarEstudiante(alumno) {
         if (this.#estudiantes.includes(alumno)) {
-            return "El estudiante ya está en la lista";
+            return "Estudiante ya está creado";
         }else {
             this.#estudiantes.push(alumno);
-            return "El estudiante ha sido añadido";
+            return "Estudiante añadido correctamente";
         }
     }
 
@@ -105,10 +105,10 @@ export class Lista {
      */
     agregarAsignatura(materia) {
         if (this.#asignaturas.includes(materia)) {
-            return "La asignatura ya está en la lista";
+            return "Asignatura ya está creada";
         }else {
             this.#asignaturas.push(materia);
-            return "La asignatura ha sido añadida";
+            return "Asignatura añadida correctamente";
         }
     }
 
@@ -162,7 +162,30 @@ export class Lista {
      * @description Busca Estudiantes en "this.#estudiantes" por un patrón de su nombre.
      * 
      * @param {string} patron - Cadena a buscar en los nombres de los Estudiantes. 
-     * @returns {string} Cadena formateada de los Estudiantes o mensaje indicando que no sean encotrado.
+     * @returns {Object[]} Array de objetos con los datos de los Estudiantes o vacío si no se encuentra.
+     * 
+     * @example
+     * // Buscar un Estudiante en la lista.
+     * // Por ejemplo:
+     * // {
+     * //   id: "ARM001",
+     * //   nombre: "Armando Vaquero",
+     * //   edad: 23,
+     * //   calle: "Una calle",
+     * //   numero: 30,
+     * //   piso: 1,
+     * //   codpostal: 18010,
+     * //   provincia: "Granada",
+     * //   localidad: "Granada",
+     * //   asignaturas: [
+     * //     {
+     * //       nombre: "DAWES",
+     * //       notas: [["ARM001", [5, 7]]],
+     * //       promedio: 6.00
+     * //     }
+     * //   ],
+     * //   historial: [["11/02/2025", "DAWES", "Matricula"]]
+     * // }
      */
     buscarEstudiante(patron) {
         const resultado = this.#estudiantes.filter(alumno => 
@@ -181,17 +204,16 @@ export class Lista {
      * @description Busca Asignaturas en "this.#asignaturas" por un patrón de su nombre.
      * 
      * @param {string} patron - Cadena a buscar en los nombres de las Asignaturas. 
-     * @returns {string} Cadena formateada de las Asignaturas o mensaje indicando que no sean encotrado.
+     * @returns {Object[]} Array de objetos con los datos de las Asignaturas o vacío si no se encuentra.
      * 
      * @example
      * // Buscar una Asignatura en la lista.
      * // Por ejemplo:
-     * // ───────────────────────────────
-     * //            DAWES
-     * // ===============================
-     * // - DAWES: 5 - 10 - 7 - 8
-     * // ------------------------------
-     * //   - Promedio = 7.50
+     * // {
+     * //   nombre: "DAWES", 
+     * //   notas: [["ARM001", [5, 7]]],
+     * //   promedio: "6.00"
+     * // }
      */
     buscarAsignatura(patron) {
         const resultado = this.#asignaturas.filter(materia => 
@@ -207,9 +229,9 @@ export class Lista {
 
     /**
      * @function
-     * @description Devuelve un array de objetos con los datos de todos los Estudiantes.
+     * @description Retorna un array de objetos con los datos de todos los Estudiantes.
      * 
-     * @returns {Object[]} Array de objetos.
+     * @returns {Object[]} Array de objetos, donde cada objeto contiene los datos de un Estudiante.
      */
     obtenerDatosEstudiantes() {
         return this.estudiantes.map(alumno => alumno.mostrarEstudiante());
@@ -217,14 +239,20 @@ export class Lista {
 
     /**
      * @function
-     * @description Devuelve un array de objetos con los datos de todos las Asignaturas.
+     * @description Retorna un array de objetos con los datos de todas las Asignaturas.
      * 
-     * @returns {Object[]} Array de objetos.
+     * @returns {Object[]} Array de objetos, donde cada objeto contiene los datos de una Asignatura.
      */
     obtenerDatosAsignaturas() {
         return this.asignaturas.map(asignatura => asignatura.mostrarAsignaturas());
     }
 
+    /**
+     * @function
+     * @description Elimina un Estudiante de "this.#estudiantes" por su ID.
+     * 
+     * @param {string} id - ID del Estudiante a eliminar.
+     */
     eliminarEstudiantePorId(id) {
         const posicion = this.#estudiantes.findIndex(alumno => alumno.id === id);
         if (posicion !== -1) {
@@ -235,6 +263,12 @@ export class Lista {
         }
     }
 
+    /**
+     * @function
+     * @description Elimina una Asignatura de "this.#asignaturas" por su nombre.
+     * 
+     * @param {string} nombre - Nombre de la Asignatura a eliminar.
+     */
     eliminarAsignaturaPorNombre(nombre) {
         const posicion = this.#asignaturas.findIndex(materia => materia.nombre === nombre);
         if (posicion !== -1) {

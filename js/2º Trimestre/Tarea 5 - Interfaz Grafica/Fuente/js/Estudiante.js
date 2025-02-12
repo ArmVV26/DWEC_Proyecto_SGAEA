@@ -119,10 +119,19 @@ export class Estudiante extends Persona{
         return this.#asignatura;
     }
 
+    /**
+     * Añade una Asignatura al Estudiante.
+     * 
+     * @param {Asignatura} materia - Asignatura a añadir.
+     */
     set asignatura(materia) {
         this.#asignatura.push(materia);
     }
-
+    /**
+     * Añade un registro al historial del Estudiante.
+     * 
+     * @param {Array} registro - Registros a añadir.
+     */
     set historial(registros) {
         this.#historial = registros;
     }
@@ -220,9 +229,13 @@ export class Estudiante extends Persona{
 
     /**
      * @function
-     * @description Envio los datos del historial de un Estudiante en forma de matriz.
+     * @description Retorna el historial del Estudiante formateado.
      * 
-     * @returns {Object} Un objeto con el historial del Estudiante.
+     * @returns {Object} Historial del Estudiante.
+     * 
+     * @example
+     * // Devuelve el historial del Estudiante formateado.
+     * // Por ejemplo: [["06/12/2024", "DAWES", "Matricula"]]
      */
     mostrarHistorial() {
         return this.#historial;
@@ -230,11 +243,35 @@ export class Estudiante extends Persona{
 
     /**
      * @function
-     * @description Envio los datos del Estudiante en forma de matriz.
+     * @description Retorna los datos del Estudiante en un objeto formateado.
      * 
      * @returns {Object} Un objeto con los datos del Estudiante.
+     * 
+     * @example
+     * // Devuelve un objeto con los datos del Estudiante formateados:
+     * // Por ejemplo:
+     * // {
+     * //   id: "ARM001",
+     * //   nombre: "Armando Vaquero",
+     * //   edad: 23,
+     * //   calle: "Una calle",
+     * //   numero: 30,
+     * //   piso: 1,
+     * //   codpostal: 18010,
+     * //   provincia: "Granada",
+     * //   localidad: "Granada",
+     * //   asignaturas: [
+     * //     {
+     * //       nombre: "DAWES",
+     * //       notas: [["ARM001", [5, 7]]],
+     * //       promedio: 6.00
+     * //     }
+     * //   ],
+     * //   historial: [["11/02/2025", "DAWES", "Matricula"]]
+     * // }
      */
     mostrarEstudiante() {
+        // Mapeo las asignaturas matriculadas para obtener sus datos formateados.
         let datos_asignaturas = this.#asignatura.map(materia => {
             return {
                 nombre: materia.nombre,

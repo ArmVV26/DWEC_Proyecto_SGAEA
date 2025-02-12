@@ -173,17 +173,23 @@ export class Asignatura{
 
     /**
      * @function
-     * @description Envio los datos de la Asignatura en forma de matriz.
+     * @description Retorna los datos de la Asignatura en un objeto formateado.
      * 
      * @returns {Object} Un objeto con los datos de la Asignatura.
+     * 
+     * @example
+     * // Devuelve un objeto con los datos de la Asignatura formateados:
+     * // {
+     * //   nombre: "DAWES", 
+     * //   notas: [["ARM001", [5, 7]]],
+     * //   promedio: "6.00"
+     * // }
      */
     mostrarAsignaturas() {
         return {
             nombre: this.#nombre,
-            notas: Array.from(this.#calificaciones),
+            notas: Array.from(this.#calificaciones), // Convierto el mapa de calificaciones a un array
             promedio: this.calcularPromedioGeneral(),
-        };
-        
-        
+        };        
     }
 }
