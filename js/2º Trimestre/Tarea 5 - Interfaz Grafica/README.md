@@ -52,7 +52,7 @@ En este apartado voy a explicar las funciones principales de mi programa y los c
 #### 3.1. Funciones Principales
 Las funcionalidades principales de mi programa (que están en `app.js`) son las siguientes:
 - ***menuSecundario(accion)***: Esta función muestra un menú en el que hay que seleccionar *Estudiante* o *Asignatura*, y dependiendo de lo que pulses y de la acción que se pase por paramentros, llamará a otra función de *Estudiante* o de *Asignatura*.
-- ***agregarEstudiante()***: Muestra un formulario con los datos necesarios para crear un *Estudiante*, se valida el formulario y se crea.
+- ***agregarEstudiante()***: Muestra un formulario en el que se muestra un campo, si ese campo esta correcte puedes pasar al siguiente o al anteior, permitiendo crear *Estudiante*.
 - ***agregarAsignatura()***: Misma funcionalidad que el anterior, pero para *Asignatura*.
 - ***eliminarEstudiante()***: Muestra una tabla con el nombre, el id del *Estudiante* y un botón que servirá para indicar qué *Estudiante* queremos eliminar.
 - ***eliminarAsignatura()***: Misma funcionalidad que el anterior, pero para *Asignatura*.

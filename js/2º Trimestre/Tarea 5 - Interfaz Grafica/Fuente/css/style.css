@@ -175,6 +175,15 @@ form h1 {
     color: var(--color-salmon);
 }
 
+form section {
+    display: flex;
+    flex-direction: column;
+}
+
+.oculto{
+    display:none;
+}
+
 form h2 {
     font-size: 1.25rem;
     text-align: center;
@@ -203,7 +212,7 @@ input:focus {
 
 form button {
     width: 10rem;
-    margin-top: 2rem;
+    margin: 1rem 0 0.25rem;
     align-self: center;
 }
 

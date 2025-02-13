@@ -75,41 +75,75 @@ function agregarEstudiante() {
         <form method="post">
             <h1>Formulario Estudiante</h1>
 
-            <label for="nombre">Nombre</label>
-            <input type="text" name="nombre" id="nombre" 
-                pattern="^[A-Za-zÀ-ÿ\\s]+$" placeholder="Nombre y Apellidos" required>
+            <section id="campo-1"> 
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" id="nombre" 
+                    pattern="^[A-Za-zÀ-ÿ\\s]+$" placeholder="Nombre y Apellidos" required>
+                <button type="button" class="siguiente" >Siguiente</button>
+            </section>
 
-            <label for="edad">Edad</label>
-            <input type="number" name="edad" id="edad" 
-                min="6" max="80" placeholder="Escribe la Edad" required>
+            <section class="oculto" id="campo-2">
+                <label for="edad">Edad</label>
+                <input type="number" name="edad" id="edad" 
+                    min="6" max="80" placeholder="Escribe la Edad" required>
+                <button type="button" class="siguiente" >Siguiente</button>
+                <button type="button" class="anterior">Anterior</button>
+            </section>
 
-            <h2>Direccion</h2>
-
-            <label for="calle">Calle</label>
-            <input type="text" name="calle" id="calle" 
-                pattern="^[A-Za-zÀ-ÿ\\s]+$" pattern="" placeholder="Escribe la Calle" required>
-
-            <label for="numero">Número</label>
-            <input type="number" name="numero" id="numero"
-                placeholder="Escribe el Nº" required>
-
-            <label for="piso">Piso</label>
-            <input type="number" name="piso" id="piso"
-                placeholder="Escribe el Piso (Por Defecto = 0)">
+            <section class="oculto" id="campo-3">
+                <h2>Direccion</h2>
+                <label for="calle">Calle</label>
+                <input type="text" name="calle" id="calle" 
+                    pattern="^[A-Za-zÀ-ÿ\\s]+$" pattern="" placeholder="Escribe la Calle" required>
+                <button type="button" class="siguiente" >Siguiente</button>
+                <button type="button" class="anterior">Anterior</button>
+            </section>
             
-            <label for="codPostal">Codigo Postal</label>
-            <input type="number" name="codPostal" id="codPostal" 
-                min="10000" max="99999" placeholder="Escribe el Codigo Postal" required>
+            <section class="oculto" id="campo-4">
+                <h2>Direccion</h2>
+                <label for="numero">Número</label>
+                <input type="number" name="numero" id="numero"
+                    placeholder="Escribe el Nº" required>
+                <button type="button" class="siguiente" >Siguiente</button>
+                <button type="button" class="anterior">Anterior</button>         
+            </section>
 
-            <label for="localidad">Localidad</label>
-            <input type="text" name="localidad" id="localidad" 
-                pattern="^[A-Za-zÀ-ÿ\\s]+$" placeholder="Escribe la Localidad" required>
+            <section class="oculto" id="campo-5">
+                <h2>Direccion</h2>
+                <label for="piso">Piso</label>
+                <input type="number" name="piso" id="piso"
+                    placeholder="Escribe el Piso (Por Defecto = 0)">
+                <button type="button" class="siguiente" >Siguiente</button>
+                <button type="button" class="anterior">Anterior</button>
+            </section>
+            
+            <section class="oculto" id="campo-6">
+                <h2>Direccion</h2>
+                <label for="codPostal">Codigo Postal</label>
+                <input type="number" name="codPostal" id="codPostal" 
+                    min="10000" max="99999" placeholder="Escribe el Codigo Postal" required>
+                <button type="button" class="siguiente" >Siguiente</button>
+                <button type="button" class="anterior">Anterior</button>
+            </section>
 
-            <label for="provincia">Provincia</label>
-            <input type="text" name="provincia" id="provincia"
-                pattern="^[A-Za-zÀ-ÿ\\s]+$" placeholder="Escribe la Provincia" required>
+            <section class="oculto" id="campo-7">
+                <h2>Direccion</h2>
+                <label for="localidad">Localidad</label>
+                <input type="text" name="localidad" id="localidad" 
+                    pattern="^[A-Za-zÀ-ÿ\\s]+$" placeholder="Escribe la Localidad" required>
+                <button type="button" class="siguiente" >Siguiente</button>
+                <button type="button" class="anterior">Anterior</button>
+            </section>
 
-            <button type="submit">Aceptar</button>
+            <section class="oculto" id="campo-8">
+                <h2>Direccion</h2>
+                <label for="provincia">Provincia</label>
+                <input type="text" name="provincia" id="provincia"
+                    pattern="^[A-Za-zÀ-ÿ\\s]+$" placeholder="Escribe la Provincia" required>
+                <button type="submit">Aceptar</button>
+                <button type="button" class="anterior">Anterior</button>
+            </section>
+
         </form>
     `;
 
@@ -203,6 +237,58 @@ function agregarEstudiante() {
         // Muestra el mensaje de error.
         campo.reportValidity();
     }
+
+    const botonSiguiente = document.querySelectorAll(".siguiente");
+
+    // Evento para mostrar el siguiente campo del formulario.
+    botonSiguiente.forEach(boton => {
+
+        /**
+         * @event click
+         * @description Muestra el siguiente campo del formulario al hacer click en el botón "Siguiente".
+         */
+        boton.addEventListener("click", function() {
+            
+            // Se recoge el campo actual y su input.
+            const actual = this.parentElement;
+            const campo = actual.querySelector("input");
+
+            // Si el campo es valido, se oculta el actual y se muestra el siguiente.
+            if (campo.checkValidity()) {
+                actual.style.display = 'none';
+
+                // Se recoge el siguiente campo y se comprueba.
+                const siguiente = actual.nextElementSibling;
+                if (siguiente) {
+                    siguiente.style.display = 'flex';
+                }
+            } else {
+                campo.reportValidity();
+            }
+        });
+    });
+
+    const botonAnterior = document.querySelectorAll(".anterior");
+
+    // Evento para mostrar el anterior campo del formulario.
+    botonAnterior.forEach(boton => {
+        
+        /**
+         * @event click
+         * @description Muestra el anterior campo del formulario al hacer click en el botón "Anterior".
+         */
+        boton.addEventListener("click", function() {
+            
+            // Se recoge el campo actual y se oculta.
+            const actual = this.parentElement;
+            actual.style.display = 'none';
+            
+            const anterior = actual.previousElementSibling;
+            if (anterior) {
+                anterior.style.display = 'flex';
+            }
+        });
+    });
 
     /**
      * @event submit
