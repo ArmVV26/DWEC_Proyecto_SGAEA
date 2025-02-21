@@ -19,11 +19,13 @@ Contiene todos los archivos donde se ha realizado el proyecto. La organización 
 #### 2.1. Estructura Interna
 - **1º Trimestre**: Esta carpeta contiene el proyecto desarrollado en el 1º Trimestre.
 - **2º Trimestre**: Esta carpeta contiene las diferentes *Tareas* desarrolladas en el 2º Trimestre. Estas *Tareas* son:
-    + **Tarea 4.1 - Control de Errores**: En esta *Tarea* había que implementar de forma correcta las declaraciones **if** y los bloques **try..catch**, de forma correcta.
-    + **Tarea 4.3 - JSDOC**: En esta *Tarea* había que comentar con **JSDOC** el proyecto y después generar la documentación con **Node**.
-    + **Tarea 4.4 - Módulos**: En esta *Tarea* había que dividir el proyecto en diferentes módulos de forma correcta.
-    + **Tarea 4.5 - Polyfill y Transpile**: En esta *Tarea* había que transpilar/compilar el proyecto para que fuese compatible con navegadores antiguos.
-    + **Tarea 4.5 - Polyfill y Transpile-(Parcel)**: Esta *Tarea* tiene la misma funcionalidad que la anterior, pero esta realizada con **Parcel**.
+    + [**Tarea 4.1 - Control de Errores**](<js/2º Trimestre/Tarea 4.1 - Control de Errores>): En esta *Tarea* había que implementar de forma correcta las declaraciones **if** y los bloques **try..catch**, de forma correcta.
+    + [**Tarea 4.3 - JSDOC**](<js/2º Trimestre/Tarea 4.3 - JSDOC>): En esta *Tarea* había que comentar con **JSDOC** el proyecto y después generar la documentación con **Node**.
+    + [**Tarea 4.4 - Módulos**](<js/2º Trimestre/Tarea 4.4 - Modulos>): En esta *Tarea* había que dividir el proyecto en diferentes módulos de forma correcta.
+    + [**Tarea 4.5 - Polyfill y Transpile**](<js/2º Trimestre/Tarea 4.5 - Polyfill y Transpile>): En esta *Tarea* había que transpilar/compilar el proyecto para que fuese compatible con navegadores antiguos.
+    + [**Tarea 4.5 - Polyfill y Transpile-(Parcel)**](<js/2º Trimestre/Tarea 4.5 - Polyfill y Transpile-(Parcel)>): Esta *Tarea* tiene la misma funcionalidad que la anterior, pero esta realizada con **Parcel**.
+    + [**Tarea 5 - Interfaz Gráfica**](<js/2º Trimestre/Tarea 5 - Interfaz Grafica>): En esta *Tarea* se muestra el proyecto **SGAEA** de forma gráfica.
+    + [**Tarea 6 - API+JQuery+TailWindCSS**](<js/2º Trimestre/Tarea 6 - API+JQuery+TailWindCSS>): En esta *Tarea* se usa **JQuery**, **JavaScript Nativo** y **TailWindCSS**, para mostrar el contenido de una *API*. 
 
 > [!NOTE]
 > En todas las *Tareas* se encuentra una documentación donde se explica el proceso de realización que se ha llevado en cada una.
