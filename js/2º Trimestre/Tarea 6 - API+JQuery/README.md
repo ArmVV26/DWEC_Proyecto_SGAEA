@@ -37,6 +37,7 @@
     - [4.3. Incluir JQuery en el HTML](#43-incluir-jquery-en-el-html)
     - [4.4. Configurar los Scripts](#44-configurar-los-scripts)
     - [4.5. Ejecutar el Proyecto](#45-ejecutar-el-proyecto)
+  - [5. Capturas del Proyecto](#5-capturas-del-proyecto)
   - [Ejecutar el Proyecto](#ejecutar-el-proyecto)
 
 ## Documentación
@@ -51,6 +52,9 @@ El proyecto está estructurado de la siguiente manera:
     - `js/`: Contiene los dos archivos **JavaScript**, ***pokemonAPI-JQuery.js*** y ***pokemonAPI.js***.
 - ***package.json***: Archivo que centraliza la configuración del entorno de desarrollo del proyecto y automatiza diferentes tareas.
 - ***tailwind.config.css***: Archivo que configura ciertos aspectos de **TailWindCSS**, como variables o para añadir *plugins*.
+
+> [!NOTE]
+> Para pasar de una página a otra, en la última opción del menú superior pone *JQuery* o *Normal*.
 
 ## 2. TailWindCSS
 Para configurar tu web con **TailWindCSS**, es necesario hacer los siguientes pasos:
@@ -409,6 +413,13 @@ Y para generar una versión optimizada para producción se usa.
 npm run prod
 ```
 Ambos abrirán una página en un servidor local.
+
+## 5. Capturas del Proyecto
+Imagen de la página con **JavaScript Nativo**. <br>
+![Web con JavaScript Nativo](../img-documentar/Tarea-6/img-normal.PNG)
+
+Imagen de la página con **JQuery**. <br>
+![Web con JQuery](../img-documentar/Tarea-6/img-JQuery.PNG)
 
 ---
 ## Ejecutar el Proyecto
