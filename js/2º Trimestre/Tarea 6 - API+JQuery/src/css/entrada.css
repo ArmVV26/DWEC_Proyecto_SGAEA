@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components{
+    /* Patron para el fondo de la imagen de los pokemons */
+    .fondo-patron {
+        @apply pattern-isometric pattern-gray-300 pattern-bg-white pattern-size-16 pattern-opacity-100;
+    }   
+
+    /* Efecto de las tarjetas */
+    .efecto-tarjeta {
+        @apply transition-transform duration-300 ease-in-out cursor-pointer hover:scale-105 active:scale-95;
+    }
+
+    /* Estilo de las tarjetas */
+    .tarjeta {
+        @apply flex flex-col mt-5 overflow-hidden rounded-lg shadow-md text-base-content;
+    }
+
+    .tarjeta figure {
+        @apply flex justify-center fondo-patron;
+    }
+
+    .tarjeta img {
+        @apply object-contain w-32 h-32;
+    }
+
+    .tarjeta section {
+        @apply text-white bg-custom-black;
+    }
+
+    .tarjeta .nombre-id {
+        @apply flex items-center justify-between w-full px-4;
+    }
+
+    .tarjeta h1 {
+        @apply text-xl font-bold;
+    }
+    
+    .tarjeta h2 {
+        @apply text-xl italic font-bold text-custom-yellow;
+    }
+
+    .tarjeta .tipos {
+        @apply flex justify-center gap-2 py-2;
+    }
+    
+    .tarjeta .tipos p {
+        @apply px-3 py-1 rounded-lg;
+    }
+
+    .tarjeta .peso {
+        @apply w-full py-2 text-right;
+    }
+    
+    .tarjeta .peso p {
+        @apply px-3 py-1 text-sm opacity-60;
+    }
+}

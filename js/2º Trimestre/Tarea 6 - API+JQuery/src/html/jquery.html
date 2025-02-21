@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../img/icono-pokemon.ico">
+    <link rel="stylesheet" href="../css/salida.css">
+    <script type="module" src="../js/pokemonAPI-JQuery.js" defer></script>
+    <title>Pokemon API</title>
+</head>
+<body class="bg-custom-white-red">
+    <header class="flex flex-col items-center text-base font-bold shadow-header bg-primary font-lato md:flex-row sm:justify-center">
+
+        <section class="flex-1 px-5 py-1">
+            <picture>
+                <source srcset="../img/logo-Pokeball-256px.png" type="image/png">
+                <img src="../img/logo-Pokeball-256px.png" alt="Logo de Pokemon" class="w-20 h-20">
+            </picture>
+            </a>
+        </section>
+
+        <nav class="flex-none">
+            <ul class="menu menu-horizontal md:gap-2 md:px-5 sm:gap1 sm:px-0">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="#">Pokemons</a></li>
+                <li><a href="#">Tipos</a></li>
+                <li><a href="index.html">Normal</a></li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <main class="w-4/5 m-auto font-roboto">
+        <section id="contenedor-tarjetas" class="grid gap-5 2xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
+
+        </section>
+    </main>
+
+    <footer class="flex flex-col items-center mt-5 font-bold shadow-footer bg-secondary font-lato">
+        <nav class="m-2">
+            <ul class="items-center gap-2 px-5 menu md:menu-horizontal sm:menu-vertical">
+                <li><a href="#">Terminos y Condiciones</a></li>
+                <li><a href="#">Contacto</a></li>
+                <li><a href="#">Politicas de Privacidad</a></li>
+            </ul>
+        </nav>
+
+        <section class="text-base font-bold text-center">
+            <p class="opacity-50">Creado por Armando Vaquero Vargas</p>
+            <p class="opacity-50">© Todos los derechos reservados. 2024-2025</p>
+        </section>
+    </footer>
+</body>
+</html>
